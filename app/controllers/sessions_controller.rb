@@ -16,4 +16,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def delete
+    session.clear
+    flash[:notice] = "Thank you for visiting"
+    redirect_to root_path
+  end
 end

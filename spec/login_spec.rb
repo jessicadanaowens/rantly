@@ -13,6 +13,13 @@ feature "User can login" do
     expect(page).to have_content "Welcome"
   end
 
+  scenario "User can log out" do
+    register
+
+    click_on "Logout"
+    expect(page).to have_content "Thank you for visiting"
+  end
+
   def register
     visit root_url
 
@@ -23,3 +30,4 @@ feature "User can login" do
     click_on "Register"
   end
 end
+
