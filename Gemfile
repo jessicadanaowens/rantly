@@ -30,6 +30,8 @@ group :development, :test do
   gem 'capybara'
 end
 
+gem 'pry'
+gem 'pry-byebug'
 
 gem 'bcrypt'
 

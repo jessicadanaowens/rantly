@@ -24,6 +24,7 @@
   <ul>
     <li>
       <%= rant.rant %>
+      <%= link_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
     </li>
   </ul>
     <% end %>

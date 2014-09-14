@@ -1,3 +1,4 @@
+require "cgi"
 class RantsController < ApplicationController
 
   def new
@@ -19,7 +20,17 @@ class RantsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def show
+    @my_rants = Rant.where(:user_id => session[:user_id])
+  end
+
+  def destroy
+
+    Rant.find(params[:id]).destroy
+    flash[:notice] = "Rant was deleted successfully!"
+    redirect_to root_path
   end
 
   private
@@ -27,6 +38,4 @@ class RantsController < ApplicationController
   def allow_params
     params.require(:rant).permit(:topic, :rant, :user_id => session[:user_id])
   end
-
-
 end

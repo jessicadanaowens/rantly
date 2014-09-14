@@ -2,16 +2,27 @@ require "rails_helper"
 
 feature "User can rant" do
   scenario "User can create rant" do
-    login
+    create_rant
+  end
 
-    fill_in "Topic", :with => "topic"
-    fill_in "Rant", :with => "rant about topic"
+  scenario "User can delete a rant that they've created" do
+    create_rant
+    click_on "Delete"
+    expect(page).to_not have_content "rant about topic"
+    expect(page).to have_content "Rant was deleted successfully"
+  end
+end
 
-    click_on "RANT"
-    expect(page).to have_content "My Rants"
-    within('#my-rants-container') do
-      expect(page).to have_content "rant about topic"
-    end
+def create_rant
+  login
+
+  fill_in "Topic", :with => "topic"
+  fill_in "Rant", :with => "rant about topic"
+
+  click_on "RANT"
+  expect(page).to have_content "My Rants"
+  within('#my-rants-container') do
+    expect(page).to have_content "rant about topic"
   end
 end
 
