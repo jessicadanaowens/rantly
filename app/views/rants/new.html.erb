@@ -1,3 +1,31 @@
 <h1>Rantly</h1>
 <h3>Let it all out</h3>
 <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id) %>
+
+<%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
+  <% @rant.errors.any? %>
+    <% @rant.errors.full_messages.each do |message| %>
+      <li>message</li>
+    <% end %>
+
+
+  <%= f.label :topic %>
+  <%= f.text_field :topic %>
+
+  <%= f.label :rant %>
+  <%= f.text_area :rant %>
+
+  <%= f.submit "RANT" %>
+<% end %>
+
+<section id="my-rants-container">
+  <h1>My Rants</h1>
+  <% @my_rants.each do |rant| %>
+  <ul>
+    <li>
+      <%= rant.rant %>
+    </li>
+  </ul>
+    <% end %>
+</section>
+

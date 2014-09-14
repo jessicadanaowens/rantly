@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914140227) do
+ActiveRecord::Schema.define(version: 20140914151034) do
+
+  create_table "rants", force: true do |t|
+    t.string  "topic"
+    t.text    "rant"
+    t.integer "user_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
