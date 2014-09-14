@@ -1,6 +1,5 @@
-class RegistrationsController < ApplicationController
-
-  skip_before_filter :ensure_authenticated_user
+class UsersController < ApplicationController
+  skip_before_action :ensure_current_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -14,7 +13,7 @@ class RegistrationsController < ApplicationController
     )
 
     if @user.save
-      flash[:notice] = "Thank you for registering"
+      flash[:notice] = "Thank you for registering!"
       redirect_to root_path
     else
       render :new

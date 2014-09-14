@@ -1,4 +1,4 @@
-<%= form_for @user, url: sign_in_path do |f| %>
+<%= form_for @user, url: signin_path do |f| %>
 
 <ul>
   <li>
@@ -9,7 +9,7 @@
 <%= f.label :password %>
 <%= f.password_field :password %>
   </li>
-  <li>
+  <li id="login-button">
 <%= f.submit "Login" %>
   </li>
 </ul>

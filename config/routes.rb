@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'homepage#index'
+  root "rants#new"
+  get "/home" => "homepage#show", as: :homepage
+  get "/signin" => "sessions#new", as: :signin
+  get "sign_out" => "sessions#delete", as: :signout
+  post "signin" => "sessions#create"
 
-  resources :registrations
-  resources :sessions, except: :create
-
-  post "sign_in" => "sessions#create"
-  delete "sign_out" => "sessions#delete"
+  resources :users do
+    resources :rants
+  end
 end

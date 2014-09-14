@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <div class="title">Rantly</div>
+  <section id="navbar-links">
+  <%if current_user %>
+    <%= link_to "LOGOUT", signout_path %>
+  <% else %>
+    <%= link_to "Login", signin_path %>
+    <%= link_to "Join", new_user_path %>
+  <% end %>
+  </section>
+</header>
 <%= flash[:notice] if flash[:notice] %>
 
 <%= yield %>
