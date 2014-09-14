@@ -29,7 +29,7 @@
       <%= f.text_area :bio, rows: "10" %>
     </li>
 
-    <div id="frequency-of-rants-form"
+    <div id="frequency-of-rants-form">
 
     <p>How often do you rant?</p>
 
@@ -41,6 +41,8 @@
 
     <%= f.radio_button :frequency, :monthly %>
     <%= f.label :rant_frequency_monthly, "Monthly" %>
+
+    </div>
 
     <li>
       <%= f.submit "Register" %>
