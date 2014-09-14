@@ -6,5 +6,6 @@ feature "User is on the homepage" do
     visit homepage_path
 
     expect(page).to have_content("Rantly")
+    expect(page).to have_content("Login Join")
   end
 end
