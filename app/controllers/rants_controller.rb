@@ -5,6 +5,9 @@ class RantsController < ApplicationController
     @rant = Rant.new
     @user = User.find(session[:user_id])
     @my_rants = Rant.where(:user_id => session[:user_id])
+    @latest_rants = Rant.where.not(user_id: session[:user_id])
+    p "*" * 80
+    p @latest_rants
   end
 
   def create

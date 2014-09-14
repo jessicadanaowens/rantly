@@ -11,7 +11,42 @@ feature "User can rant" do
     expect(page).to_not have_content "rant about topic"
     expect(page).to have_content "Rant was deleted successfully"
   end
+
+  scenario "User can view rants created by other users" do
+    create_rant
+
+    click_on "LOGOUT"
+
+    visit homepage_path
+
+    click_on "Join"
+    fill_in "Username", :with => "Blake"
+    fill_in "First name", :with => "Blake"
+    fill_in "Last name", :with => "Calderwood"
+    fill_in "Bio", :with => "yo!"
+    fill_in "Password", :with => "password"
+    within("#frequency-of-rants-form") do
+      choose "user_frequency_daily"
+    end
+    click_on "Register"
+
+    within('#navbar-links') do
+      click_on "Login"
+    end
+
+    fill_in "Username", :with => "Blake"
+    fill_in "Password", :with => "password"
+
+    within('#login-button') do
+      click_on "Login"
+    end
+
+    expect(page).to have_content "Latest Rants"
+    expect(page).to have_content "rant about topic"
+  end
 end
+
+
 
 def create_rant
   login

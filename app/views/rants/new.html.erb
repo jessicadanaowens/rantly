@@ -18,6 +18,17 @@
   <%= f.submit "RANT" %>
 <% end %>
 
+<section id="latest-rants-container">
+  <h1>Latest Rants</h1>
+  <% @latest_rants.each do |rant| %>
+  <ul>
+    <li>
+      <%= rant.rant %>
+    </li>
+  </ul>
+  <% end %>
+</section>
+
 <section id="my-rants-container">
   <h1>My Rants</h1>
   <% @my_rants.each do |rant| %>
