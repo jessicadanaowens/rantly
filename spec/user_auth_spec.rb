@@ -17,6 +17,11 @@ feature "User Auth" do
     expect(page).to have_content "Username can't be blank"
   end
 
+  scenario "User registers successfully" do
+    register
+    expect(page).to have_content "Thank you for registering"
+  end
+
   scenario "User can login" do
     login
 
@@ -37,6 +42,13 @@ feature "User Auth" do
     click_on "Jessica Owens"
 
     expect(page).to have_content("Edit Profile")
+    expect(page).to have_content "Bio"
+    click_on "Update"
+
+    expect(page).to have_content "Password can't be blank"
+    fill_in "Password", :with => "password"
+    click_on "Update"
+    expect(page).to have_content "Your profile was updated successfully"
   end
 
   def register
