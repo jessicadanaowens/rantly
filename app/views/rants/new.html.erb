@@ -27,10 +27,10 @@
     </li>
     <li>
       <%= rant.user.username%>
-      <% if @interesting_ranters.include?(rant.user_id) %>
+      <% if @interesting_ranters_ids.include?(rant.user_id) %>
         <h1>unfollow</h1>
       <% else %>
-        <%= link_to "follow", interestingranters_path(rant.user_id), method: :post %>
+        <%= link_to "follow", user_interestingranters_path(@user, rant.user_id), method: :post %>
       <% end %>
     </li>
   </ul>

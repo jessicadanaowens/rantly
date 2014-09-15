@@ -48,6 +48,9 @@ feature "User can rant" do
 
     click_on "follow"
     expect(page).to have_content "unfollow"
+
+    click_on "unfollow"
+    expect(page).not_to have_content "unfollow"
   end
 
 
