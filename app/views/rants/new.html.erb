@@ -28,7 +28,7 @@
     <li>
       <%= rant.user.username%>
       <% if @interesting_ranters_ids.include?(rant.user_id) %>
-        <h1>unfollow</h1>
+        <h1><%= link_to "unfollow", user_interestingranter_path(@user, rant.user_id), method: :delete %></h1>
       <% else %>
         <%= link_to "follow", user_interestingranters_path(@user, rant.user_id), method: :post %>
       <% end %>

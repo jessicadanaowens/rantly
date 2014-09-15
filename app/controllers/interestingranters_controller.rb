@@ -19,4 +19,11 @@ class InterestingrantersController < ApplicationController
 
   end
 
+  def destroy
+    p "*" * 80
+    p params
+    Interestingranter.where(:user_id => params[:user_id], :ranter_id => params[:id]).destroy_all
+    redirect_to root_path
+  end
+
 end
