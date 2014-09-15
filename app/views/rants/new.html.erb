@@ -25,6 +25,14 @@
     <li>
       <%= rant.rant %>
     </li>
+    <li>
+      <%= rant.user.username%>
+      <% if @interesting_ranters.include?(rant.user_id) %>
+        <h1>unfollow</h1>
+      <% else %>
+        <%= link_to "follow", interestingranters_path(rant.user_id), method: :post %>
+      <% end %>
+    </li>
   </ul>
   <% end %>
 </section>

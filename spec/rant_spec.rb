@@ -43,7 +43,14 @@ feature "User can rant" do
 
     expect(page).to have_content "Latest Rants"
     expect(page).to have_content "rant about topic"
+
+    #user can follow other users
+
+    click_on "follow"
+    expect(page).to have_content "unfollow"
   end
+
+
 end
 
 
