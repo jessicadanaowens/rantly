@@ -1,0 +1,25 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<% if @interesting_ranters_ids.include?(@user.id) %>
+  <h1><%= link_to "unfollow", user_interestingranter_path(current_user, @user.id), method: :delete %></h1>
+<% else %>
+  <%= link_to "follow", user_interestingranters_path(current_user, @user.id), method: :post %>
+<% end %>
+
+<p><%= @user.bio %></p>
+<ul>
+  <li>
+    <% @user.rants.each do |rant| %>
+      <%= rant.topic %>
+      <%= rant.rant %>
+
+      <% if @favorite_rants_ids.include?(rant.id) %>
+        <%= link_to "Unfavorite", user_favorite_rant_path(current_user, rant.id), :class => "delete", :method => :delete %>
+      <% else %>
+        <%= button_to "Favorite", user_favorite_rants_path(current_user, rant.id), method: :post %>
+      <% end %>
+    <% end %>
+
+
+  </li>
+</ul>

@@ -31,6 +31,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
+    @interesting_ranters_ids = Interestingranter.where(:user_id => current_user).select(:ranter_id).map(&:ranter_id)
+    @user = User.find(params[:id])
+
+  end
+
   private
 
   def user_params

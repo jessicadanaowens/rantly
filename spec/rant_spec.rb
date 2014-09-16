@@ -71,15 +71,25 @@ feature "User can rant" do
 
     click_on "rant about topic"
     expect(page).to have_content "rant about topic"
-    
+
 
     #user can favorite a rant
 
     click_on "Favorite"
     expect(page).to have_content "Unfavorite"
+
+    #user can unfavorite a rant
+
+    click_on "Unfavorite"
+    find_button "Favorite"
+
+    #user can click on another user's name and view their profile
+
+    visit "/"
+
+    click_on "Jessica"
+    expect(page).to have_content "Jessica"
   end
-
-
 
 
 end

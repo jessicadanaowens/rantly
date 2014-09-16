@@ -1,8 +1,6 @@
-<% @interesting_ranters.each do |ranter| %>
-<ul>
-  <li>
-    <h1><%=ranter.first_name%> <%=ranter.last_name%></h1>
-    <h1><%= link_to "unfollow", user_interestingranter_path(current_user, ranter.id), method: :delete %></h1>
-  </li>
-</ul>
+
+
+<% current_user.interestingranters.each do |ranter| %>
+<%= ranter.ranter.first_name %> <%= ranter.ranter.last_name %>
+  <h1><%= link_to "unfollow", user_interestingranter_path(current_user, ranter.ranter_id), method: :delete %></h1>
 <% end %>
