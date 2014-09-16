@@ -1,5 +1,14 @@
 class InterestingrantersController < ApplicationController
 
+  def index
+    @interesting_ranters_ids = Interestingranter.where(:user_id => params[:user_id]).select(:ranter_id).map(&:ranter_id)
+    @interesting_ranters = []
+    @interesting_ranters_ids.each do |id|
+      @interesting_ranters << User.find(id)
+    end
+    @interesting_ranters
+
+  end
 
   def create
     p "*"

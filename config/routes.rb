@@ -8,8 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :rants, only: [:create]
-    resources :interestingranters, only: [:create, :destroy]
-
+    resources :interestingranters, only: [:create, :destroy, :index]
   end
 
   resources :rants , :only => :destroy

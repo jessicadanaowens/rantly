@@ -12,6 +12,7 @@
   <section id="navbar-links">
   <%if current_user %>
     <%= link_to "LOGOUT", signout_path %>
+    <%= link_to "Following", user_interestingranters_path(current_user) %>
   <% else %>
     <%= link_to "Login", signin_path %>
     <%= link_to "Join", new_user_path %>
