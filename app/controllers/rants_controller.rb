@@ -1,7 +1,8 @@
 require "cgi"
 class RantsController < ApplicationController
 
-  def new
+  def index
+    @my_rants = Rant.where(:user_id => session[:user_id])
     @rant = Rant.new
     @user = User.find(session[:user_id])
     @my_rants = Rant.where(:user_id => session[:user_id])
@@ -26,15 +27,15 @@ class RantsController < ApplicationController
     end
   end
 
-  def show
-    @my_rants = Rant.where(:user_id => session[:user_id])
-  end
-
   def destroy
-
     Rant.find(params[:id]).destroy
     flash[:notice] = "Rant was deleted successfully!"
     redirect_to root_path
+  end
+
+  def show
+    @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
+    @rant = Rant.find(params[:id])
   end
 
   private

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "rants#new"
+  root "rants#index"
   post "/" => "rants#destroy"
   get "/home" => "homepage#show", as: :homepage
   get "/signin" => "sessions#new", as: :signin
@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   post "signin" => "sessions#create"
 
   resources :users do
-    resources :rants, only: [:create]
+    resources :rants, only: [:create, :show]
     resources :interestingranters, only: [:create, :destroy, :index]
+    resources :favorite_rants
   end
 
   resources :rants , :only => :destroy

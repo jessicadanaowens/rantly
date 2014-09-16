@@ -23,7 +23,7 @@
   <% @latest_rants.each do |rant| %>
   <ul>
     <li>
-      <%= rant.rant %>
+      <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
     </li>
     <li>
       <%= rant.user.username%>

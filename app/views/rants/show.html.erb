@@ -1,0 +1,8 @@
+<%= @rant.topic %>
+<%= @rant.rant %>
+
+<% if @favorite_rants_ids.include?(@rant.id) %>
+<%= link_to "Unfavorite", user_favorite_rant_path(current_user, @rant.id), :class => "delete", :method => :delete %>
+<% else %>
+<%= button_to "Favorite", user_favorite_rants_path(current_user, @rant.id), method: :post%>
+<% end %>

@@ -55,7 +55,7 @@ feature "User can rant" do
     click_on "unfollow"
     expect(page).not_to have_content "unfollow"
 
-    #user can view view the people they are following under the Following page
+    #user can view the people they are following under the Following page
 
     click_on "follow"
 
@@ -65,9 +65,21 @@ feature "User can rant" do
 
     expect(page).to have_content "Jessica"
 
+    #user can click on a rant and view that rant
 
+    visit '/'
 
+    click_on "rant about topic"
+    expect(page).to have_content "rant about topic"
+    
+
+    #user can favorite a rant
+
+    click_on "Favorite"
+    expect(page).to have_content "Unfavorite"
   end
+
+
 
 
 end
