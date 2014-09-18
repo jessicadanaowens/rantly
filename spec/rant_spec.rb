@@ -6,11 +6,18 @@ feature "User can rant" do
     create_rant
   end
 
+  scenario "User rants unsuccessfully" do
+    login
+    click_on "RANT"
+    expect(page).to have_content "Topic can't be blank"
+    expect(page).to have_content "Rant can't be blank"
+  end
+
   scenario "User can delete a rant that they've created" do
     login
     create_rant
     click_on "Delete"
-    expect(page).to_not have_content "rant about topic"
+    expect(page).to_not have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
     expect(page).to have_content "Rant was deleted successfully"
   end
 
@@ -45,7 +52,7 @@ feature "User can rant" do
     end
 
     expect(page).to have_content "Latest Rants"
-    expect(page).to have_content "rant about topic"
+    expect(page).to have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
 
     #user can follow other users
 
@@ -70,7 +77,7 @@ feature "User can rant" do
     visit '/'
 
     click_on "rant about topic"
-    expect(page).to have_content "rant about topic"
+    expect(page).to have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
 
 
     #user can favorite a rant

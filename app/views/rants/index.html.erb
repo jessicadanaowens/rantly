@@ -1,51 +1,59 @@
-<h1>Rantly</h1>
-<h3>Let it all out</h3>
-<%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id) %>
+<div class="fluid-container">
+  <div class="row">
 
-<%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
-  <% @rant.errors.any? %>
-    <% @rant.errors.full_messages.each do |message| %>
-      <li>message</li>
-    <% end %>
+    <div class="col-md-3 rant-form">
+      <div class="container">
+        <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id) %>
 
+        <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
+          <% @rant.errors.any? %>
+          <% @rant.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
 
-  <%= f.label :topic %>
-  <%= f.text_field :topic %>
+          <div><%= f.label :topic %></div>
+          <div><%= f.text_field :topic %></div>
 
-  <%= f.label :rant %>
-  <%= f.text_area :rant %>
+          <div><%= f.label :rant %></div>
+          <div><%= f.text_area :rant %></div>
 
-  <%= f.submit "RANT" %>
-<% end %>
+          <div><%= f.submit "RANT" %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-9 root-main-body">
 
-<section id="latest-rants-container">
-  <h1>Latest Rants</h1>
-  <% @latest_rants.each do |rant| %>
-  <ul>
-    <li>
-      <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
-    </li>
-    <li>
-      <%= link_to rant.user.username, user_path(rant.user_id)%>
-      <% if @interesting_ranters_ids.include?(rant.user_id) %>
-        <h1><%= link_to "unfollow", user_interestingranter_path(@user, rant.user_id), method: :delete %></h1>
-      <% else %>
-        <%= link_to "follow", user_interestingranters_path(@user, rant.user_id), method: :post %>
-      <% end %>
-    </li>
-  </ul>
-  <% end %>
-</section>
+      <section id="latest-rants-container">
+        <h1>Latest Rants</h1>
+        <% @latest_rants.each do |rant| %>
+          <ul>
+            <li>
+              <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
+            </li>
+            <li>
+              <%= link_to rant.user.username, user_path(rant.user_id) %>
+              <% if @interesting_ranters_ids.include?(rant.user_id) %>
+                <h1><%= link_to "unfollow", user_interestingranter_path(@user, rant.user_id), method: :delete %></h1>
+              <% else %>
+                <%= link_to "follow", user_interestingranters_path(@user, rant.user_id), method: :post %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </section>
 
-<section id="my-rants-container">
-  <h1>My Rants</h1>
-  <% @my_rants.each do |rant| %>
-  <ul>
-    <li>
-      <%= rant.rant %>
-      <%= link_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
-    </li>
-  </ul>
-    <% end %>
-</section>
+      <section id="my-rants-container">
+        <h1>My Rants</h1>
+        <% @my_rants.each do |rant| %>
+          <ul>
+            <li>
+              <%= rant.rant %>
+              <%= link_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
+            </li>
+          </ul>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>
 

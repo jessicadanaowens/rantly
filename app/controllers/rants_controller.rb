@@ -13,6 +13,14 @@ class RantsController < ApplicationController
   end
 
   def create
+
+    @my_rants = Rant.where(:user_id => session[:user_id])
+    @rant = Rant.new
+    @user = User.find(session[:user_id])
+    @my_rants = Rant.where(:user_id => session[:user_id])
+    @latest_rants = Rant.where.not(user_id: session[:user_id])
+    @interesting_ranters_ids = Interestingranter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
+
     @rant = Rant.new(
       :topic => params[:rant][:topic],
       :rant => params[:rant][:rant],
@@ -23,7 +31,7 @@ class RantsController < ApplicationController
       flash[:notice] = "Rant was successfully created"
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 

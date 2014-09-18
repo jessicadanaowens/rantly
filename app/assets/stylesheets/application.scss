@@ -1,0 +1,32 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "login";
+@import "rant_form";
+
+body {
+  background-color: #666666;
+}
+
+.rantly-splash {
+  text-align: center;
+  background-color: white;
+  margin: 0px;
+}
+
+.quote-splash {
+  text-align: center;
+}
+
+.inner-quote-splash {
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar {
+  border-radius: 0px;
+}

@@ -1,13 +1,14 @@
+<section class="login-form">
 <%= form_for @user, url: signin_path do |f| %>
 
 <ul>
   <li>
 <%= f.label :username %>
-<%= f.text_field :username %>
+<%= f.text_field :username, :required => true %>
   </li>
   <li>
 <%= f.label :password %>
-<%= f.password_field :password %>
+<%= f.password_field :password, :required => true %>
   </li>
   <li id="login-button">
 <%= f.submit "Login" %>
@@ -15,3 +16,4 @@
 </ul>
 
 <% end %>
+</section>

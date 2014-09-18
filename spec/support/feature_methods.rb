@@ -2,12 +2,12 @@ require "rails_helper"
 def create_rant
 
   fill_in "Topic", :with => "topic"
-  fill_in "Rant", :with => "rant about topic"
+  fill_in "Rant", :with => "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
 
   click_on "RANT"
   expect(page).to have_content "My Rants"
   within('#my-rants-container') do
-    expect(page).to have_content "rant about topic"
+    expect(page).to have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
   end
 end
 
