@@ -13,7 +13,6 @@ class RantsController < ApplicationController
   end
 
   def create
-
     @my_rants = Rant.where(:user_id => session[:user_id])
     @rant = Rant.new
     @user = User.find(session[:user_id])

@@ -85,10 +85,18 @@ feature "User can rant" do
     click_on "Favorite"
     expect(page).to have_content "Unfavorite"
 
+    click_on "Dashboard"
+    click_on "rant about topic"
+    expect(page).to have_content "Unfavorite"
+
     #user can unfavorite a rant
 
     click_on "Unfavorite"
     find_button "Favorite"
+
+    click_on "Dashboard"
+    click_on "rant about topic"
+    expect(page).not_to have_content "Unfavorite"
 
     #user can click on another user's name and view their profile
 
