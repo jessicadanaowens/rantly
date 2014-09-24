@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :ensure_current_user, only: [:new, :create]
 
   def new
+    cookies[:welcome] = {:value => true, :expires => Time.now + 1.months}
     @user = User.new
   end
 

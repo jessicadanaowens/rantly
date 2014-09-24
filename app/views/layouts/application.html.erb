@@ -22,13 +22,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Rant.ly</a>
+        <a class="navbar-brand" href="/home">Rant.ly</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <section id="navbar-links">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <%if current_user %>
+
+
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Dashboard", root_path %></li>
+          </ul>
 
           <ul class="nav navbar-nav">
             <li><%= link_to "Following", user_interestingranters_path(current_user) %></li>

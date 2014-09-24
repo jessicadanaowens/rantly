@@ -96,6 +96,13 @@ feature "User can rant" do
 
     click_on "Jessica"
     expect(page).to have_content "Jessica"
+
+    #user can click on dashboard and be redirected to the root path
+
+    visit "/"
+    click_on "Dashboard"
+
+    expect(page).to have_content "My Rants"
   end
 
 
