@@ -114,6 +114,13 @@ feature "User can rant" do
     click_on "Jessica"
     expect(page).to have_content "Jessica"
 
+    #when user click's on another user's profile, user can favorite and unfavorite their rants
+
+    click_on "Favorite"
+    visit "/"
+    click_on "Jessica"
+    expect(page).not_to have_content "Favorite"
+
     #user can click on dashboard and be redirected to the root path
 
     visit "/"
