@@ -72,6 +72,15 @@ feature "User can rant" do
 
     expect(page).to have_content "Jessica"
 
+    #user can favorite and unfavorite a rant on the rants index page
+    visit "/"
+
+    click_on "Favorite"
+    expect(page).to have_content "Unfavorite"
+
+    click_on "Unfavorite"
+    expect(page).not_to have_content "Unfavorite"
+
     #user can click on a rant and view that rant
 
     visit '/'
