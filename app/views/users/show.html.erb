@@ -9,6 +9,11 @@
 <p><%= @user.bio %></p>
 <ul>
   <li>
+    <% Rant.sort_by_favorites(@user.rants).each do |rant| %>
+      <%= rant.topic %>
+      <%= rant.rant %>
+    <% end %>
+
     <% @user.rants.each do |rant| %>
       <%= rant.topic %>
       <%= rant.rant %>
