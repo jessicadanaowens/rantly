@@ -107,6 +107,7 @@ feature "User can rant" do
     click_on "rant about topic"
     expect(page).not_to have_content "Unfavorite"
 
+
     #user can click on another user's name and view their profile
 
     visit "/"

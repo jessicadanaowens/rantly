@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :rants , :only => :destroy
+  get "/rants" => "search#index", as: :rants
+
+  get "/search" => "search#new", as: :search
 
 
 end

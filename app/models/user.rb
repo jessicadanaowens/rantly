@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
   has_many :favorite_rants
   accepts_nested_attributes_for :rants
   validates :username, :password, :first_name, :last_name, :bio, :frequency, presence: true
+
+  def self.search(search)
+    if search
+      where('last_name LIKE ?', "%#{search}%")
+    end
+  end
 end
