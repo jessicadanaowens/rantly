@@ -1,0 +1,105 @@
+.join-button a{
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  border: thin solid gray;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 6px 40px 6px 40px;
+}
+
+.logout-button a{
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  border: thin solid gray;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 6px 40px 6px 40px;
+}
+
+.login-link a{
+  color: lightgray;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.logo-link a{
+  color: lightgray;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 24px;
+  margin-left: 40px;
+}
+
+.signed-in-links a:active {
+  color: lightgreen;
+}
+
+.signed-in-links a:link {
+  color: lightgray;
+  text-decoration: none;
+}
+
+.signed-in-links a:visited{
+  color: lightgray;
+  text-decoration: none;
+}
+
+.signed-in-links a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.app-flex-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /*justify-content: flex-start;*/
+  /*align-content: flex-start;*/
+  /*align-items: baseline;*/
+
+  background-color: #393B39;
+}
+
+.flex1 {
+  /*flex: 1 0 150px;*/
+  border-right: thin solid green;
+  height: 60px;
+  width: 155px;
+  padding-top: 10px;
+}
+
+.flex2 {
+  flex: 5 0 40px;
+  margin-right: 15px;
+  height: 60px;
+  width: 45px;
+  text-align:right;
+  padding-top: 16px;
+}
+.app-flex3 {
+  flex: 0 0 140px;
+  height: 60px;
+  width: 140px;
+  padding-top: 16px;
+}
+
+.flex4 {
+  flex: 3 0 400px;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 60px;
+  width: 400px;
+  padding-top: 16px;
+  text-align: center;
+  /*border: thin solid black;*/
+}
+
+.flex5 {
+  flex: 0 0 180px;
+  height: 60px;
+  width: 180px;
+  padding-top: 16px;
+  /*border: thin solid black;*/
+}

@@ -1,0 +1,60 @@
+<h1><%= current_user.first_name%> <%=current_user.last_name %></h1>
+<div class="col-md-3 rant-form">
+  <div class="container">
+
+    <%= form_for [@rant], url: user_rants_path(current_user) do |f| %>
+      <% @rant.errors.any? %>
+      <% @rant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      <div><%= f.label :topic %></div>
+      <div><%= f.text_field :topic %></div>
+
+      <div><%= f.label :rant %></div>
+      <div><%= f.text_area :rant %></div>
+
+      <div><%= f.submit "RANT" %></div>
+    <% end %>
+  </div>
+
+  <%= form_tag search_path, :method => "get" do %>
+
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <ul>
+
+  <% if @users %>
+
+    <% @users.each do |user| %>
+    <% user.rants.each do |rant| %>
+
+            <li>
+              <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
+            </li>
+            <li>
+              <%= link_to rant.user.username, user_path(rant.user_id) %>
+              <% if @interesting_ranters_ids.include?(rant.user_id) %>
+                <h1><%= link_to "unfollow", user_interestingranter_path(current_user, rant.user_id), method: :delete %></h1>
+              <% else %>
+                <%= link_to "follow", user_interestingranters_path(current_user, rant.user_id), method: :post %>
+              <% end %>
+            </li>
+            <li>
+              <% favorite_rant = FavoriteRant.where(rant_id: rant.id, user_id: current_user.id).first %>
+              <% if !favorite_rant %>
+                <%= button_to "Favorite", user_favorite_rants_path(current_user, rant.id), method: :post%>
+              <% else %>
+                <%= link_to "Unfavorite", user_favorite_rant_path(current_user, rant.id), :class => "delete", :method => :delete %>
+              <% end %>
+            </li>
+        <% end %>
+    <% end %>
+  <% end %>
+
+  </ul>
+
+</div>
+

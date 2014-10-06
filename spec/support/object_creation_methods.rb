@@ -1,0 +1,5 @@
+require "rails_helper"
+
+def create_another_rant(id, topic)
+  Rant.create(:id => id, :topic => topic, :rant => "exampleexampleexampleexampleexampleexamplexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexample", :user_id => 10)
+end
