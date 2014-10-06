@@ -4,6 +4,21 @@
 @import "login";
 
 
+.following-ranters-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.following-ranter-flex {
+  flex: 33%;
+  text-align: center;
+}
+
+
 * {
   font-family: 'Nunito', sans-serif;
   box-sizing: border-box;
@@ -60,10 +75,10 @@ h1{
 }
 
 .dash-profile-picture img{
-  width: 200px;
+  max-width: 200px;
   text-align: center;
-
 }
+
 h1.rant-label {
   font-size: 34px;
   margin: 0;
