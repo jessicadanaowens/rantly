@@ -1,23 +1,35 @@
-<div class="rantly-splash">
-  <h1>Rantly</h1>
-
+<div class="white-banner">
+  <h1 class="text-center rant-label">Rantly</h1>
   <p>Let it all out</p>
 </div>
-<div class="quote-splash">
-  <div class="inner-quote-splash">
-    <%= image_tag '200.jpeg' %>
-    <div class="text">
-      <% if cookies[:welcome] %>
-         <p>Welcome Back</p>
-      <% end %>
-      <p>"Rantly has allowed a certain freedom, I never thought possible. Now I can rant to the internet at large,
-        without having to worry about my thoughts. I just type it out, hit click, and feel the surge of relief. Thanks
-        Rantly, you've truly made my most inane rants heard. I remember a time when I wasn't able to truly express
-        myself. It's really frustrating when you want to be heard and no one..."</p>
 
-      <p>--Jeff Taggart, avid Ranter</p>
-    </div>
+
+<% if cookies[:welcome] %>
+<div class="home-flash-notice">
+<h3>Welcome back! Please consider registering to begin your ranting!</h3>
+</div>
+<% else %>
+  <%if flash[:notice]%>
+  <div class="home-flash-notice">
+    <%=flash[:notice]%>
   </div>
+  <% end %>
+<% end %>
+
+
+<div class="home-flex-container home-bottom">
+  <div class="home-flex1 jeff-picture"><%= image_tag("jeff.png") %></div>
+
+  <div class="home-flex2">
+    <p class="no-margin">"Rantly has allowed a certain freedom I never thought possible. Now I can rant
+      to the internet at large, without having to worry about my thoughts. I just type it
+      out, hit click, and feel the surge of relief. Thanks Rantly, you've truly made my
+      most insane rants heard. I remember a time when I wasn't able to truly express
+      myself. It's really frustrating when you want to be heard and no one..."</p>
+
+    <p>| Jeff Taggart, avid Ranter</p>
+  </div>
+
 </div>
 
 

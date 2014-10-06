@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Thank you for registering!"
+      cookies.delete :welcome
       redirect_to root_path
     else
       render :new

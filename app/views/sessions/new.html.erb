@@ -1,19 +1,14 @@
-<section class="login-form">
+<div class="login-container">
+  <h1>Login</h1>
 <%= form_for @user, url: signin_path do |f| %>
 
-<ul>
-  <li>
-<%= f.label :username %>
-<%= f.text_field :username, :required => true %>
-  </li>
-  <li>
-<%= f.label :password %>
-<%= f.password_field :password, :required => true %>
-  </li>
-  <li id="login-button">
-<%= f.submit "Login" %>
-  </li>
-</ul>
+<div><%= f.label :username %></div>
+<%= f.text_field :username, :required => true, :class => "login-field" %>
 
+<div><%= f.label :password %></div>
+<%= f.password_field :password, :required => true, :class => "login-field" %>
+</div>
+<div class="login-button-container">
+<%= f.submit "LOGIN", :class => "login-button" %>
+</div>
 <% end %>
-</section>

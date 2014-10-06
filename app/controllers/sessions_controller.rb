@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class SessionsController < ApplicationController
   skip_before_action :ensure_current_user
 
@@ -11,6 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
+      cookies.delete :welcome
       flash[:notice] = "Welcome"
       redirect_to root_path
     else

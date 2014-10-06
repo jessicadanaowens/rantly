@@ -1,51 +1,55 @@
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="form-container">
 
-  <ul>
-    <li>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </li>
-    <li>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </li>
-    <li>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-    </li>
-    <li>
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </li>
-    <li>
-      <%= f.label :bio %>
-      <%= f.text_area :bio, rows: "10" %>
-    </li>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="join-flex-container">
+      <div class="join-flex-form">
+        <div><%= f.label :username %></div>
+        <%= f.text_field :username, :class => "join-field" %>
+        <div><%= f.label :password %></div>
+        <%= f.password_field :password, :class => "join-field" %>
+      </div>
 
-    <div id="frequency-of-rants-form">
+      <div class="join-flex-form">
+        <div><%= f.label :first_name %></div>
+        <%= f.text_field :first_name, :class => "join-field" %>
+        <div><%= f.label :last_name %></div>
+        <%= f.text_field :last_name, :class => "join-field" %>
+      </div>
 
-    <p>How often do you rant?</p>
-
-    <%= f.radio_button :frequency, :daily %>
-    <%= f.label :rant_frequency_daily, "Daily" %>
-
-    <%= f.radio_button :frequency, :weekly %>
-    <%= f.label :rant_frequency_weekly, "Weekly" %>
-
-    <%= f.radio_button :frequency, :monthly %>
-    <%= f.label :rant_frequency_monthly, "Monthly" %>
-
+      <div class="join-form-bio">
+        <div><%= f.label :bio %></div>
+        <%= f.text_area :bio, rows: "10", :class => "bio-field" %>
+      </div>
     </div>
 
-    <li>
-      <%= f.submit "Register" %>
-    </li>
-  </ul>
-<% end %>
+    <p class>How often do you rant?</p>
+
+    <div class="radio-flex-container">
+      <div class="radio-button-flex">
+        <%= f.radio_button :frequency, :daily %>
+        <%= f.label :rant_frequency_daily, "Daily" %>
+      </div>
+      <div class="radio-button-flex">
+        <%= f.radio_button :frequency, :weekly %>
+        <%= f.label :rant_frequency_weekly, "Weekly" %>
+      </div>
+      <div class="radio-button-flex">
+        <%= f.radio_button :frequency, :monthly %>
+        <%= f.label :rant_frequency_monthly, "Monthly" %>
+      </div>
+    </div>
+
+</div>
+
+    <div class="register-button-container">
+      <%= f.submit "REGISTER", :class=>"register-button-flex" %>
+  <% end %>
+
+  </div>

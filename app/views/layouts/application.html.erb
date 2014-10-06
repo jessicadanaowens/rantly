@@ -2,61 +2,63 @@
 <html>
 <head>
   <title>Rantly</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- this makes a design responsive-->
+
+  <link href='http://fonts.googleapis.com/css?family=Nunito:700,300,400' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
 <header>
 
 
-
-  <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/home">Rant.ly</a>
+  <% if current_user %>
+    <section class="app-flex-container">
+      <div class="flex1 logo-link">
+        <%= link_to "Rant.ly", homepage_path(current_user) %>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <section id="navbar-links">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <%if current_user %>
+      <div class="flex4 signed-in-links">
+        <%= link_to "Dashboard", root_path %><span class="green"> |</span>
+        <%= link_to "Following", user_interestingranters_path(current_user) %><span class="green"> |</span>
+        <%= link_to "Favorites", root_path %><span class="green"> |</span>
+        <%= link_to "Search", search_path %>
 
+      </div>
+      <div class="flex5">
+        <div class="logout-button">
+          <%= link_to "LOGOUT", signout_path %>
+        </div>
+      </div>
+    </section>
+  <% else %>
 
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Dashboard", root_path %></li>
-          </ul>
+    <section class="app-flex-container">
+      <div class="flex1 logo-link">
+        <%= link_to "Rant.ly", root_path %>
+      </div>
 
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Following", user_interestingranters_path(current_user) %></li>
-          </ul>
+      <div class="flex2 login-link">
+        <%= link_to "Login", signin_path %>
+      </div>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "LOGOUT", signout_path %></li>
-          </ul>
+      <div class="app-flex3">
+        <div class="join-button">
+          <%= link_to "Join", new_user_path %>
+        </div>
+      </div>
+    </section>
 
-        <% else %>
+  <% end %>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Login", signin_path %></li>
-            <li><%= link_to "Join", new_user_path %></li>
-          </ul>
+  </div>
 
-        <% end %>
-
-      </div><!-- /.navbar-collapse -->
-      </section>
-    </div><!-- /.container-fluid -->
-  </nav>
 </header>
+<body>
+
 <%= flash[:notice] if flash[:notice] %>
 
 <%= yield %>

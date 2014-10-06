@@ -1,9 +1,12 @@
-<div class="fluid-container">
-  <div class="row">
+<div class="dash-flex-container">
 
-    <div class="col-md-3 rant-form">
-      <div class="container">
-        <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id) %>
+    <div class="dash-flex1">
+
+      <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
+
+      <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
+
+      <hr>
 
         <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
           <% @rant.errors.any? %>
@@ -11,57 +14,66 @@
             <li><%= message %></li>
           <% end %>
 
-          <div><%= f.label :topic %></div>
-          <div><%= f.text_field :topic %></div>
+          <div class="white-text"><%= f.label :name, "A rant about:" %></div>
+          <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
 
-          <div><%= f.label :rant %></div>
-          <div><%= f.text_area :rant %></div>
+          <div class="white-text"><%= f.label :name, "Rant:" %></div>
+          <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
 
-          <div><%= f.submit "RANT" %></div>
+          <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
         <% end %>
-      </div>
+
     </div>
-    <div class="col-md-9 root-main-body">
 
-      <section id="latest-rants-container">
-        <h1>Latest Rants</h1>
-        <% @latest_rants.each do |rant| %>
-          <ul>
-            <li>
-              <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
-            </li>
-            <li>
-              <%= link_to rant.user.username, user_path(rant.user_id) %>
-              <% if @interesting_ranters_ids.include?(rant.user_id) %>
-                <h1><%= link_to "unfollow", user_interestingranter_path(@user, rant.user_id), method: :delete %></h1>
-              <% else %>
-                <%= link_to "follow", user_interestingranters_path(@user, rant.user_id), method: :post %>
-              <% end %>
-            </li>
-            <li>
-              <% favorite_rant = FavoriteRant.where(rant_id: rant.id, user_id: current_user.id).first %>
-              <% if !favorite_rant %>
-                <%= button_to "Favorite", user_favorite_rants_path(current_user, rant.id), method: :post%>
-              <% else %>
-                <%= link_to "Unfavorite", user_favorite_rant_path(current_user, rant.id), :class => "delete", :method => :delete %>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-      </section>
+    <div class="dash-flex2">
 
-      <section id="my-rants-container">
-        <h1>My Rants</h1>
-        <% @my_rants.each do |rant| %>
-          <ul>
-            <li>
-              <%= rant.rant %>
-              <%= link_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
-            </li>
-          </ul>
-        <% end %>
-      </section>
+      <h1 class="text-center rant-label">Latest Rants</h1>
+      <hr>
+      <% @latest_rants.each do |rant| %>
+        <div class="latest-rant-container-flex">
+
+          <div class="latest-rant-flex1">
+            <div class="latest-ranter-name"><%= link_to rant.user.username, user_path(rant.user_id) %></div>
+            <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
+            <% if @interesting_ranters_ids.include?(rant.user_id) %>
+               <p class="font-10pt"><%= link_to "Unfollow", user_interestingranter_path(@user, rant.user_id), method: :delete %></p>
+            <% else %>
+               <p class="font-10pt"><%= link_to "Follow", user_interestingranters_path(@user, rant.user_id), method: :post %></p>
+            <% end %>
+          </div>
+
+          <div class="latest-rant-flex2">
+            <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id), :class=>("font-10pt") %>
+            <% favorite_rant = FavoriteRant.where(rant_id: rant.id, user_id: current_user.id).first %>
+            <br>
+            <% if !favorite_rant %>
+                <p class="font-10pt favorite-button"><%= link_to "Favorite", user_favorite_rants_path(current_user, rant.id), method: :post %></p>
+            <% else %>
+                <p class="font-10pt favorite button"><%= link_to "Unfavorite", user_favorite_rant_path(current_user, rant.id), :class => "delete", :method => :delete %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <hr class="end-of-latest-rant">
+
+      <h1 class="text-center rant-label">My Rants</h1>
+
+      <% @my_rants.each do |rant| %>
+
+        <div class="latest-rant-container-flex">
+          <div class="latest-rant-flex1">
+            <div class="latest-ranter-name"><%= current_user.username %></div>
+            <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
+          </div>
+
+          <div class="latest-rant-flex2">
+            <p class="font-10pt"><%= rant.rant %></p>
+            <%= link_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
+          </div>
+        </div>
+        <br>
+      <% end %>
+
     </div>
   </div>
 </div>
-
