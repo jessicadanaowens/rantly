@@ -17,6 +17,7 @@ feature "User can rant" do
   scenario "User can delete a rant that they've created" do
     create_rant(1, "rant", 1)
     login
+    expect(page).to have_content "exampleexampleexampleexampleexampleexamplexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexample"
     click_on "Delete"
     expect(page).to_not have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
     expect(page).to have_content "Rant was deleted successfully"
