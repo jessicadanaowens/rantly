@@ -4,14 +4,13 @@ class SessionsController < ApplicationController
 
   def new
     cookies[:welcome] = {:value => true, :expires => Time.now + 1.months}
-    @user = User.new
   end
 
   def create
-    @user = User.new
-    @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
+
+    user = User.find_by(:username => params[:session][:username])
+    if user && user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
       cookies.delete :welcome
       flash[:notice] = "Welcome"
       redirect_to root_path
