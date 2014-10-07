@@ -1,8 +1,14 @@
+<% if flash[:notice] %>
+  <div class="flash-notice-container">
+    <h1><%= flash[:notice] %></h1>
+  </div>
+<% end %>
+
 <div class="dash-flex-container">
 
     <div class="dash-flex1">
 
-      <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
+      <div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
 
       <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
 
