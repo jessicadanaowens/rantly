@@ -24,7 +24,7 @@
       <div class="flex4 signed-in-links">
         <%= link_to "Dashboard", root_path %><span class="green"> |</span>
         <%= link_to "Following", user_interestingranters_path(current_user) %><span class="green"> |</span>
-        <%= link_to "Favorites", root_path %><span class="green"> |</span>
+        <%= link_to "Favorites", user_favorite_rants_path(current_user) %><span class="green"> |</span>
         <%= link_to "Search", search_path %>
 
       </div>

@@ -1,5 +1,13 @@
 class FavoriteRantsController < ApplicationController
 
+  def index
+    @user = User.find(session[:user_id])
+    @rant = Rant.new
+    @favorite_rants = @user.favorite_rants
+    @interesting_ranters_ids = Interestingranter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
+
+  end
+
   def create
     @favorite_rant = FavoriteRant.new(
       :user_id => params[:user_id],
