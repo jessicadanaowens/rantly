@@ -15,6 +15,6 @@ feature "User is on the homepage" do
     click_on "Login"
     click_on "Rant.ly"
 
-    expect(page).to have_content "Welcome Back"
+    expect(page).to have_content "Welcome back! Please consider registering to begin your ranting!"
   end
 end
