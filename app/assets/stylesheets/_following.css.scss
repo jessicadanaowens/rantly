@@ -1,0 +1,13 @@
+.following-ranters-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.following-ranter-flex {
+  flex: 33%;
+  text-align: center;
+}
