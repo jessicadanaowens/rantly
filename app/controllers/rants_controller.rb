@@ -9,8 +9,7 @@ class RantsController < ApplicationController
     @latest_rants = Rant.where.not(user_id: session[:user_id])
 
     @interesting_ranters_ids = Interestingranter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
-    p "*" * 80
-    p @interesting_ranters
+
   end
 
   def create

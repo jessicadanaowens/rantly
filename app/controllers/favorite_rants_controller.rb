@@ -1,3 +1,4 @@
+require "pry-byebug"
 class FavoriteRantsController < ApplicationController
 
   def index

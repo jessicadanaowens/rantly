@@ -15,10 +15,13 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'pry-byebug'
+  gem 'pry'
+  gem 'database_cleaner'
 end
 
-gem 'pry'
-gem 'pry-byebug'
 gem 'bcrypt'
 
 # gem 'unicorn'
@@ -30,3 +33,4 @@ gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'rails_12factor', group: :production
+
