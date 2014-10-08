@@ -1,22 +1,31 @@
-<h1><%= current_user.first_name%> <%=current_user.last_name %></h1>
-<div class="col-md-3 rant-form">
-  <div class="container">
+<div class="dash-flex-container">
 
-    <%= form_for [@rant], url: user_rants_path(current_user) do |f| %>
+  <div class="dash-flex1">
+
+    <div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
+
+    <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
+
+    <hr>
+
+    <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
       <% @rant.errors.any? %>
       <% @rant.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
 
-      <div><%= f.label :topic %></div>
-      <div><%= f.text_field :topic %></div>
+      <div class="white-text"><%= f.label :name, "A rant about:" %></div>
+      <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
 
-      <div><%= f.label :rant %></div>
-      <div><%= f.text_area :rant %></div>
+      <div class="white-text"><%= f.label :name, "Rant:" %></div>
+      <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
 
-      <div><%= f.submit "RANT" %></div>
+      <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
     <% end %>
+
   </div>
+  <div class="dash-flex2">
+
 
   <%= form_tag search_path, :method => "get" do %>
 
@@ -55,6 +64,6 @@
   <% end %>
 
   </ul>
-
+</div>
 </div>
 
