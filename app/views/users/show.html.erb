@@ -29,7 +29,7 @@
     <h1 class="text-center rant-label"><%= @user.first_name %> <%= @user.last_name %></h1>
 
     <hr>
-    
+
     <% if @interesting_ranters_ids.include?(@user.id) %>
       <h1><%= link_to "unfollow", user_interestingranter_path(current_user, @user.id), method: :delete %></h1>
     <% else %>
