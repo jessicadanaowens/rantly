@@ -1,13 +1,44 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="dash-flex-container">
 
-<% if @interesting_ranters_ids.include?(@user.id) %>
-  <h1><%= link_to "unfollow", user_interestingranter_path(current_user, @user.id), method: :delete %></h1>
-<% else %>
-  <%= link_to "follow", user_interestingranters_path(current_user, @user.id), method: :post %>
-<% end %>
+  <div class="dash-flex1">
 
-<p><%= @user.bio %></p>
-<ul>
+    <div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
+
+    <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
+
+    <hr>
+
+    <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
+      <% @rant.errors.any? %>
+      <% @rant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      <div class="white-text"><%= f.label :name, "A rant about:" %></div>
+      <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
+
+      <div class="white-text"><%= f.label :name, "Rant:" %></div>
+      <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
+
+      <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
+    <% end %>
+
+  </div>
+  <div class="dash-flex2">
+
+    <h1 class="text-center rant-label"><%= @user.first_name %> <%= @user.last_name %></h1>
+
+    <hr>
+    
+    <% if @interesting_ranters_ids.include?(@user.id) %>
+      <h1><%= link_to "unfollow", user_interestingranter_path(current_user, @user.id), method: :delete %></h1>
+    <% else %>
+      <%= link_to "follow", user_interestingranters_path(current_user, @user.id), method: :post %>
+    <% end %>
+
+  <p><%= @user.bio %></p>
+
+    <ul>
 
     <% Rant.sort_by_favorites(@user.rants).each do |rant| %>
       <li><%= rant.topic %></li>
@@ -20,10 +51,7 @@
       <% end %>
     <% end %>
 
+    </ul>
 
-
-
-
-
-
-</ul>
+  </div>
+</div>
