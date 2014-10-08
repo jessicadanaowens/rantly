@@ -24,8 +24,6 @@ class FavoriteRantsController < ApplicationController
   end
 
   def destroy
-    p "*" * 80
-    p params
     FavoriteRant.where(:rant_id => params[:id], :user_id => params[:user_id]).destroy_all
     redirect_to user_rant_path(params[:user_id], params[:id])
   end

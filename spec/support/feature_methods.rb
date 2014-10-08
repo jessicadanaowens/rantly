@@ -1,5 +1,3 @@
-require "pry-byebug"
-require "launchy"
 require "rails_helper"
 
 def register
