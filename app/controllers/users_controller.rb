@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new
     @rant = Rant.new
     @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
-    @interesting_ranters_ids = InterestingRanter.where(:user_id => current_user).select(:ranter_id).map(&:ranter_id)
+    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
     @user = User.find(params[:id])
   end
 

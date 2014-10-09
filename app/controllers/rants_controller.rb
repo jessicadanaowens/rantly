@@ -1,24 +1,19 @@
 require "cgi"
+
 class RantsController < ApplicationController
 
   def index
-    @my_rants = Rant.where(:user_id => session[:user_id])
     @rant = Rant.new
-    @user = User.find(session[:user_id])
     @my_rants = Rant.where(:user_id => session[:user_id])
     @latest_rants = Rant.where.not(user_id: session[:user_id])
-
-    @interesting_ranters_ids = InterestingRanter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
-
+    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
   end
 
   def create
-    @my_rants = Rant.where(:user_id => session[:user_id])
     @rant = Rant.new
-    @user = User.find(session[:user_id])
     @my_rants = Rant.where(:user_id => session[:user_id])
     @latest_rants = Rant.where.not(user_id: session[:user_id])
-    @interesting_ranters_ids = InterestingRanter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
+    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
 
     @rant = Rant.new(
       :topic => params[:rant][:topic],
@@ -51,4 +46,5 @@ class RantsController < ApplicationController
   def allow_params
     params.require(:rant).permit(:topic, :rant, :user_id => session[:user_id])
   end
+
 end
