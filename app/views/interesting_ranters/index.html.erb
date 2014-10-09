@@ -35,7 +35,7 @@
         <div class="following-ranter-flex">
           <div class="latest-ranter-name"><%= ranter.ranter.first_name %> <%= ranter.ranter.last_name %></div>
           <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
-          <p class="font-10pt"><%= button_to "Unfollow", user_interestingranter_path(current_user, ranter.ranter_id), method: :delete %></p>
+          <p class="font-10pt"><%= button_to "Unfollow", user_interesting_ranter_path(current_user, ranter.ranter_id), method: :delete %></p>
         </div>
     <% end %>
     </div>

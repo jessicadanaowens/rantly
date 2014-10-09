@@ -1,4 +1,4 @@
-class InterestingrantersController < ApplicationController
+class InterestingRantersController < ApplicationController
 
   def index
     @interesting_ranters = current_user.interestingranters

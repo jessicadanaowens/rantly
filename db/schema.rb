@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141002154631) do
     t.integer "user_id"
   end
 
-  create_table "interestingranters", force: true do |t|
+  create_table "interesting_ranters", force: true do |t|
     t.integer "user_id"
     t.integer "ranter_id"
   end
