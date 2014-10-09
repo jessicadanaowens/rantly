@@ -1,4 +1,4 @@
-class Interestingranter < ActiveRecord::Base
+class InterestingRanter < ActiveRecord::Base
   belongs_to :user
   belongs_to :ranter, :class_name => User
 

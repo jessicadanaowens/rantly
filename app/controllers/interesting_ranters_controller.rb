@@ -1,13 +1,13 @@
-class InterestingrantersController < ApplicationController
+class InterestingRantersController < ApplicationController
 
   def index
-    @interesting_ranters = current_user.interestingranters
+    @interesting_ranters = current_user.interesting_ranters
     @user = User.find(session[:user_id])
     @rant = Rant.new
   end
 
   def create
-   @interesting_ranter = Interestingranter.new(
+   @interesting_ranter = InterestingRanter.new(
      :user_id => params[:user_id],
      :ranter_id =>params["format"]
    )
@@ -21,7 +21,7 @@ class InterestingrantersController < ApplicationController
   end
 
   def destroy
-    Interestingranter.where(:user_id => params[:user_id], :ranter_id => params[:id]).destroy_all
+    InterestingRanter.where(:user_id => params[:user_id], :ranter_id => params[:id]).destroy_all
     redirect_to root_path
   end
 

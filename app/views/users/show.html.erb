@@ -31,9 +31,9 @@
     <hr>
 
     <% if @interesting_ranters_ids.include?(@user.id) %>
-      <h1><%= link_to "unfollow", user_interestingranter_path(current_user, @user.id), method: :delete %></h1>
+      <h1><%= link_to "unfollow", user_interesting_ranter_path(current_user, @user.id), method: :delete %></h1>
     <% else %>
-      <%= link_to "follow", user_interestingranters_path(current_user, @user.id), method: :post %>
+      <%= link_to "follow", user_interesting_ranters_path(current_user, @user.id), method: :post %>
     <% end %>
 
   <p><%= @user.bio %></p>

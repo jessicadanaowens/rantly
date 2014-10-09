@@ -8,7 +8,7 @@ class RantsController < ApplicationController
     @my_rants = Rant.where(:user_id => session[:user_id])
     @latest_rants = Rant.where.not(user_id: session[:user_id])
 
-    @interesting_ranters_ids = Interestingranter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
+    @interesting_ranters_ids = InterestingRanter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
 
   end
 
@@ -18,7 +18,7 @@ class RantsController < ApplicationController
     @user = User.find(session[:user_id])
     @my_rants = Rant.where(:user_id => session[:user_id])
     @latest_rants = Rant.where.not(user_id: session[:user_id])
-    @interesting_ranters_ids = Interestingranter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
+    @interesting_ranters_ids = InterestingRanter.where(:user_id => session[:user_id]).select(:ranter_id).map(&:ranter_id)
 
     @rant = Rant.new(
       :topic => params[:rant][:topic],
