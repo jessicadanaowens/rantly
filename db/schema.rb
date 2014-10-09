@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(version: 20141009141424) do
     t.integer "ranter_id"
   end
 
-  create_table "interestingranters", force: true do |t|
-    t.integer "user_id"
-    t.integer "ranter_id"
-  end
-
   create_table "rants", force: true do |t|
     t.string  "topic"
     t.text    "rant"
