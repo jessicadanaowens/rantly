@@ -1,0 +1,9 @@
+<ul>
+<% Rant.sort_by_favorites(@user.rants).each do |rant| %>
+
+  <li><%= rant.topic %></li>
+  <li><%= rant.rant %></li>
+
+  <%= favorite_rant_button rant %>
+<% end %>
+</ul>

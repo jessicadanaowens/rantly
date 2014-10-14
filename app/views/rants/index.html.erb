@@ -1,8 +1,4 @@
-<% if flash[:notice] %>
-  <div class="flash-notice-container">
-    <h1><%= flash[:notice] %></h1>
-  </div>
-<% end %>
+<%= render "flash_notice" %>
 
 <div class="dash-flex-container">
 
@@ -11,48 +7,12 @@
   </div>
 
   <div class="dash-flex2">
-
     <h1 class="text-center rant-label">Latest Rants</h1>
     <hr>
-    <% @latest_rants.each do |rant| %>
-      <div class="latest-rant-container-flex">
-
-        <div class="latest-rant-flex1">
-          <div class="latest-ranter-name"><%= link_to rant.user.username, user_path(rant.user_id) %></div>
-          <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
-
-          <%= follow_button rant.user %>
-
-
-        </div>
-
-        <div class="latest-rant-flex2">
-          <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id), :class => ("font-10pt") %>
-
-          <%= favorite_rant_button rant %>
-
-        </div>
-      </div>
-    <% end %>
+    <%= render "latest_rants" %>
     <hr class="end-of-latest-rant">
-
     <h1 class="text-center rant-label">My Rants</h1>
-
-    <% @my_rants.each do |rant| %>
-
-      <div class="latest-rant-container-flex">
-        <div class="latest-rant-flex1">
-          <div class="latest-ranter-name"><%= current_user.username %></div>
-          <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
-        </div>
-
-        <div class="latest-rant-flex2">
-          <p class="font-10pt"><%= rant.rant %></p>
-          <%= button_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
-        </div>
-      </div>
-      <br>
-    <% end %>
+    <%= render "my_rants" %>
   </div>
-</div>
+
 </div>

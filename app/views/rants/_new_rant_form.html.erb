@@ -1,6 +1,10 @@
-<div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
+<div class="dash-profile-picture-container">
+  <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
+</div>
 
-<h2 class="text-center white-text"><%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user.id)%></h2>
+<h2 class="text-center white-text">
+  <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user.id)%>
+</h2>
 
 <hr>
 

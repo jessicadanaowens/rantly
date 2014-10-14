@@ -1,13 +1,8 @@
 <div class="form-container">
 
   <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render "error_messages" %>
+
     <div class="join-flex-container">
       <div class="join-flex-form">
         <div><%= f.label :username %></div>

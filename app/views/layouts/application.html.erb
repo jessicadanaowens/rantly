@@ -14,9 +14,10 @@
 
 <header>
 
-
   <% if current_user %>
+
     <section class="app-flex-container">
+
       <div class="flex1 logo-link">
         <%= link_to "Rant.ly", homepage_path(current_user) %>
       </div>
@@ -26,17 +27,20 @@
         <%= link_to "Following", user_interesting_ranters_path(current_user) %><span class="green"> |</span>
         <%= link_to "Favorites", user_favorite_rants_path(current_user) %><span class="green"> |</span>
         <%= link_to "Search", search_path %>
-
       </div>
+
       <div class="flex5">
         <div class="logout-button">
           <%= link_to "LOGOUT", signout_path %>
         </div>
       </div>
+
     </section>
+
   <% else %>
 
     <section class="app-flex-container">
+
       <div class="flex1 logo-link">
         <%= link_to "Rant.ly", root_path %>
       </div>
@@ -50,16 +54,15 @@
           <%= link_to "Join", new_user_path %>
         </div>
       </div>
+
     </section>
 
   <% end %>
 
-  </div>
-
 </header>
+
 <body>
-
 <%= yield %>
-
 </body>
+
 </html>

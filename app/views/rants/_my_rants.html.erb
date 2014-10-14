@@ -1,0 +1,19 @@
+<% @my_rants.each do |rant| %>
+
+  <div class="latest-rant-container-flex">
+
+    <div class="latest-rant-flex1">
+      <div class="latest-ranter-name"><%= current_user.username %></div>
+      <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
+    </div>
+
+    <div class="latest-rant-flex2">
+      <p class="font-10pt"><%= rant.rant %></p>
+      <%= button_to "Delete", rant_path(rant), :class => "delete", :method => :delete %>
+    </div>
+
+  </div>
+
+  <br>
+
+<% end %>

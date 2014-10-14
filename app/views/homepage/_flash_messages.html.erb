@@ -1,0 +1,11 @@
+<% if cookies[:welcome] %>
+  <div class="home-flash-notice">
+    <h3>Welcome back! Please consider registering to begin your ranting!</h3>
+  </div>
+<% else %>
+  <%if flash[:notice]%>
+    <div class="home-flash-notice">
+      <%=flash[:notice]%>
+    </div>
+  <% end %>
+<% end %>

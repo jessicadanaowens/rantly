@@ -7,24 +7,14 @@
   <div class="dash-flex2">
 
     <h1 class="text-center rant-label"><%= @user.first_name %> <%= @user.last_name %></h1>
-
     <hr>
 
     <%= follow_button @user %>
 
-  <p><%= @user.bio %></p>
+    <p><%= @user.bio %></p>
 
-    <ul>
-
-    <% Rant.sort_by_favorites(@user.rants).each do |rant| %>
-
-      <li><%= rant.topic %></li>
-      <li><%= rant.rant %></li>
-
-      <%= favorite_rant_button rant %>
-    <% end %>
-
-    </ul>
+    <%= render "sorted_rants" %>
 
   </div>
+
 </div>

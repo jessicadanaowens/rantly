@@ -1,16 +1,6 @@
 <%= flash[:notice] if flash[:notice] %>
+
 <div class="login-container">
   <h1>Login</h1>
-  <%= form_for :session, url: signin_path do |f| %>
-
-    <div><%= f.label :username %></div>
-    <%= f.text_field :username, :required => true, :class => "login-field" %>
-
-    <div><%= f.label :password %></div>
-    <%= f.password_field :password, :required => true, :class => "login-field" %>
-
-    <div class="login-button-container">
-      <%= f.submit "LOGIN", :class => "login-button" %>
-    </div>
-  <% end %>
+  <%= render "login_form" %>
 </div>

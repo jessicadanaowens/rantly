@@ -1,13 +1,7 @@
 <h1> Edit Profile </h1>
 
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= render "error_messages" %>
 
   <ul>
     <li>
