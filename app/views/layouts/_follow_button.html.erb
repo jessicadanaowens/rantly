@@ -1,0 +1,5 @@
+<% if @interesting_ranters_ids.include?(rant.user_id) %>
+  <%= button_to "unfollow", user_interesting_ranter_path(current_user, rant.user_id), method: :delete %>
+<% else %>
+  <%= button_to "follow", user_interesting_ranters_path(current_user, rant.user_id), method: :post %>
+<% end %>

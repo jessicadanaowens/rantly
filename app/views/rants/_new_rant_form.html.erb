@@ -1,0 +1,20 @@
+<div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
+
+<h2 class="text-center white-text"><%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user.id)%></h2>
+
+<hr>
+
+<%= form_for [current_user, @rant], url: user_rants_path(current_user) do |f| %>
+  <% @rant.errors.any? %>
+  <% @rant.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+
+  <div class="white-text"><%= f.label :name, "A rant about:" %></div>
+  <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
+
+  <div class="white-text"><%= f.label :name, "Rant:" %></div>
+  <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
+
+  <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
+<% end %>
