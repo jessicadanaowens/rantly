@@ -4,6 +4,18 @@
 @import "login";
 @import "following";
 
+.button {
+  background-color: white;
+  border-style: none;
+  float: right;
+}
+
+.follow-button {
+  background-color: white;
+  border-style: none;
+  text-align: center;
+}
+
 .flash-notice-container {
   background-color: green;
   color: white;
