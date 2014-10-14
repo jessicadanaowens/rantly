@@ -1,4 +1,5 @@
 <div class="form-container">
+  <h1 class="register-form-title">Register</h1>
 
   <%= form_for @user do |f| %>
     <%= render "error_messages" %>
@@ -43,8 +44,7 @@
 
 </div>
 
-    <div class="register-button-container">
-      <%= f.submit "REGISTER", :class=>"register-button-flex" %>
+<div class="register-button-container">
+  <%= f.submit "REGISTER", :class=>"register-button-flex" %>
   <% end %>
-
-  </div>
+</div>
