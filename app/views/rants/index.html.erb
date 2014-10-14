@@ -28,13 +28,9 @@
 
         <div class="latest-rant-flex2">
           <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id), :class => ("font-10pt") %>
-          <% favorite_rant = FavoriteRant.where(rant_id: rant.id, user_id: current_user.id).first %>
-          <br>
-          <% if !favorite_rant %>
-            <p class="font-10pt favorite-button"><%= button_to "Favorite", user_favorite_rants_path(current_user, rant.id), method: :post %></p>
-          <% else %>
-            <p class="font-10pt favorite button"><%= button_to "Unfavorite", user_favorite_rant_path(current_user, rant.id), :class => "delete", :method => :delete %></p>
-          <% end %>
+
+          <%= favorite_rant_button rant %>
+
         </div>
       </div>
     <% end %>

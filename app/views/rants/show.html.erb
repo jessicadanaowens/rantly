@@ -5,19 +5,13 @@
   </div>
 
   <div class="dash-flex2">
-
     <h1 class="text-center rant-label"><%= @rant.topic %></h1>
-    <% favorite_rant = FavoriteRant.where(rant_id: @rant.id, user_id: current_user.id).first %>
-    <% if !favorite_rant %>
-      <%= button_to "Favorite", user_favorite_rants_path(current_user, @rant.id), method: :post, :class => "favorite-button" %>
-    <% else %>
-      <%= button_to "Unfavorite", user_favorite_rant_path(current_user, @rant.id), :method => :delete, :class => "favorite-button" %>
-    <% end %>
+    <%= favorite_rant_button @rant %>
     <br>
     <hr>
 
     <div class="show-rant-image"<%= image_tag("jeff.png") %></div>
-  <p class="show-rant-text"><%= @rant.rant %></p>
+    <p class="show-rant-text"><%= @rant.rant %></p>
+  </div>
 
-</div>
 </div>

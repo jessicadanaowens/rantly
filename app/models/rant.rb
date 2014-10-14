@@ -1,4 +1,5 @@
 class Rant < ActiveRecord::Base
+
   belongs_to :user
   has_many :favorite_rants
 
@@ -7,7 +8,6 @@ class Rant < ActiveRecord::Base
   validates_length_of :rant, :minimum => 140, :message => "Body must be greater than 140 characters"
 
   def self.sort_by_favorites(rants)
-
     rants.sort_by do |rant|
       FavoriteRant.where(:rant_id => rant.id).length
     end

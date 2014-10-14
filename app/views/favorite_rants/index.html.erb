@@ -5,7 +5,6 @@
   </div>
 
   <div class="dash-flex2">
-
     <h1 class="text-center rant-label">Favorite Rants</h1>
     <hr>
 
@@ -14,21 +13,19 @@
       <div class="latest-rant-container-flex">
 
         <div class="latest-rant-flex1">
+
           <div class="latest-ranter-name"><%= link_to favorite_rant.rant.user.username, user_path(favorite_rant.rant.user_id) %></div>
           <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
+
           <%= follow_button favorite_rant.rant.user %>
 
         </div>
 
         <div class="latest-rant-flex2">
           <%= link_to favorite_rant.rant.rant, user_rant_path(favorite_rant.rant.user_id, favorite_rant.rant.id), :class => ("font-10pt") %>
-          <% favorite_rant = FavoriteRant.where(rant_id: favorite_rant.rant.id, user_id: current_user.id).first %>
           <br>
-          <% if !favorite_rant %>
-            <p class="font-10pt favorite-button"><%= button_to "Favorite", user_favorite_rants_path(current_user, favorite_rant.rant.id), method: :post %></p>
-          <% else %>
-            <p class="font-10pt favorite button"><%= button_to "Unfavorite", user_favorite_rant_path(current_user, favorite_rant.rant.id), :class => "delete", :method => :delete %></p>
-          <% end %>
+          <%= favorite_rant_button favorite_rant.rant %>
+
         </div>
 
       </div>
