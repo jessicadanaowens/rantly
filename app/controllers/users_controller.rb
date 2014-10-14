@@ -19,11 +19,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    find_user
   end
 
   def update
-    @user = User.find(params[:id])
+    find_user
 
     if @user.update(user_params)
       flash[:notice] = "Your profile was updated successfully"
@@ -36,8 +36,6 @@ class UsersController < ApplicationController
   def show
     @user = User.new
     @rant = Rant.new
-    @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
-    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
     @user = User.find(params[:id])
   end
 
@@ -45,5 +43,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :frequency)
+  end
+
+  def find_user
+    @user ||= User.find(params[:id])
   end
 end

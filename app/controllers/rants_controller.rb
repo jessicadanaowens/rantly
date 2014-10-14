@@ -4,13 +4,11 @@ class RantsController < ApplicationController
 
   def index
     @rant = Rant.new
-    @my_rants = Rant.where(:user_id => session[:user_id])
     latest_rants
   end
 
   def create
     @rant = Rant.new
-    @my_rants = Rant.where(:user_id => session[:user_id])
     latest_rants
 
     @rant = Rant.new(

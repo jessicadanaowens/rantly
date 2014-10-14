@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Concerns::Following
+
   has_secure_password
   has_many :rants
   has_many :interesting_ranters
