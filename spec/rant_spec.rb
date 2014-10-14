@@ -21,7 +21,7 @@ feature "User can rant", :js do
     register
     login
     create_rant
-    page.find(".delete").click
+    page.find(".button").click
     expect(page).to_not have_content "rant about topic rant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topicrant about topic"
     expect(page).to have_content "Rant was deleted successfully"
   end
