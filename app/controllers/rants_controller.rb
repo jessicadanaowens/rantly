@@ -36,7 +36,6 @@ class RantsController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
     @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
     @rant = Rant.find(params[:id])
   end

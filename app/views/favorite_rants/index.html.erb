@@ -1,30 +1,9 @@
 <div class="dash-flex-container">
 
   <div class="dash-flex1">
-
-    <div class="dash-profile-picture-container"><div class="dash-profile-picture"><%= image_tag("jeff.png") %></div></div>
-
-    <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
-
-    <hr>
-
-    <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
-
-      <% @rant.errors.any? %>
-      <% @rant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-
-      <div class="white-text"><%= f.label :name, "A rant about:" %></div>
-      <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
-
-      <div class="white-text"><%= f.label :name, "Rant:" %></div>
-      <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
-
-      <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
-    <% end %>
-
+    <%= render "layouts/new_rant_form" %>
   </div>
+
   <div class="dash-flex2">
 
     <h1 class="text-center rant-label">Favorite Rants</h1>
@@ -38,14 +17,14 @@
           <div class="latest-ranter-name"><%= link_to favorite_rant.rant.user.username, user_path(favorite_rant.rant.user_id) %></div>
           <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
           <% if @interesting_ranters_ids.include?(favorite_rant.rant.user_id) %>
-            <p class="font-10pt"><%= button_to "Unfollow", user_interesting_ranter_path(@user, favorite_rant.rant.user_id), method: :delete %></p>
+            <p class="font-10pt"><%= button_to "Unfollow", user_interesting_ranter_path(current_user, favorite_rant.rant.user_id), method: :delete %></p>
           <% else %>
-            <p class="font-10pt"><%= button_to "Follow", user_interesting_ranters_path(@user, favorite_rant.rant.user_id), method: :post %></p>
+            <p class="font-10pt"><%= button_to "Follow", user_interesting_ranters_path(current_user, favorite_rant.rant.user_id), method: :post %></p>
           <% end %>
         </div>
 
         <div class="latest-rant-flex2">
-          <%= link_to favorite_rant.rant.rant, user_rant_path(favorite_rant.rant.user_id, favorite_rant.rant.id), :class=>("font-10pt") %>
+          <%= link_to favorite_rant.rant.rant, user_rant_path(favorite_rant.rant.user_id, favorite_rant.rant.id), :class => ("font-10pt") %>
           <% favorite_rant = FavoriteRant.where(rant_id: favorite_rant.rant.id, user_id: current_user.id).first %>
           <br>
           <% if !favorite_rant %>

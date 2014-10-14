@@ -2,7 +2,6 @@ class InterestingRantersController < ApplicationController
 
   def index
     @interesting_ranters = current_user.interesting_ranters
-    @user = User.find(session[:user_id])
     @rant = Rant.new
   end
 

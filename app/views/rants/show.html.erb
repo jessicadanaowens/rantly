@@ -1,28 +1,7 @@
 <div class="dash-flex-container">
 
   <div class="dash-flex1">
-
-    <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
-
-    <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
-
-    <hr>
-
-    <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
-      <% @rant.errors.any? %>
-      <% @rant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-
-      <div class="white-text"><%= f.label :name, "A rant about:" %></div>
-      <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
-
-      <div class="white-text"><%= f.label :name, "Rant:" %></div>
-      <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
-
-      <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
-    <% end %>
-
+    <%= render "layouts/new_rant_form" %>
   </div>
 
   <div class="dash-flex2">
@@ -30,18 +9,15 @@
     <h1 class="text-center rant-label"><%= @rant.topic %></h1>
     <% favorite_rant = FavoriteRant.where(rant_id: @rant.id, user_id: current_user.id).first %>
     <% if !favorite_rant %>
-      <%= button_to "Favorite", user_favorite_rants_path(current_user, @rant.id), method: :post, :class=>"favorite-button" %>
+      <%= button_to "Favorite", user_favorite_rants_path(current_user, @rant.id), method: :post, :class => "favorite-button" %>
     <% else %>
-      <%= button_to "Unfavorite", user_favorite_rant_path(current_user, @rant.id), :method => :delete, :class=>"favorite-button" %>
+      <%= button_to "Unfavorite", user_favorite_rant_path(current_user, @rant.id), :method => :delete, :class => "favorite-button" %>
     <% end %>
     <br>
     <hr>
 
-
-
     <div class="show-rant-image"<%= image_tag("jeff.png") %></div>
-    <p class="show-rant-text"><%= @rant.rant %></p>
+  <p class="show-rant-text"><%= @rant.rant %></p>
 
-
-  </div>
+</div>
 </div>

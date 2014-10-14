@@ -4,11 +4,11 @@
 
     <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
 
-    <h2 class="text-center white-text"><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id)%></h2>
+    <h2 class="text-center white-text"><%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user.id) %></h2>
 
     <hr>
 
-    <%= form_for [:user, @rant], url: user_rants_path(@user) do |f| %>
+    <%= form_for [current_user, @rant], url: user_rants_path(current_user) do |f| %>
       <% @rant.errors.any? %>
       <% @rant.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -27,17 +27,18 @@
 
   <div class="dash-flex2">
 
-  <h1 class="text-center rant-label">Following</h1>
+    <h1 class="text-center rant-label">Following</h1>
     <hr>
     <br>
+
     <div class="following-ranters-container">
-    <% @interesting_ranters.each do |ranter| %>
+      <% @interesting_ranters.each do |ranter| %>
         <div class="following-ranter-flex">
           <div class="latest-ranter-name"><%= ranter.ranter.first_name %> <%= ranter.ranter.last_name %></div>
           <div class="dash-profile-picture"><%= image_tag("jeff.png") %></div>
           <p class="font-10pt"><%= button_to "Unfollow", user_interesting_ranter_path(current_user, ranter.ranter_id), method: :delete %></p>
         </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
