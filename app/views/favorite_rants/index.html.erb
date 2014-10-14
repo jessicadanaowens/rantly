@@ -8,28 +8,7 @@
     <h1 class="text-center rant-label">Favorite Rants</h1>
     <hr>
 
-    <% @favorite_rants.each do |favorite_rant| %>
-
-      <div class="latest-rant-container-flex">
-
-        <div class="latest-rant-flex1">
-
-          <div class="latest-ranter-name"><%= link_to favorite_rant.rant.user.username, user_path(favorite_rant.rant.user_id) %></div>
-          <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
-
-          <%= follow_button favorite_rant.rant.user %>
-
-        </div>
-
-        <div class="latest-rant-flex2">
-          <%= link_to favorite_rant.rant.rant, user_rant_path(favorite_rant.rant.user_id, favorite_rant.rant.id), :class => ("font-10pt") %>
-          <br>
-          <%= favorite_rant_button favorite_rant.rant %>
-
-        </div>
-
-      </div>
-    <% end %>
+    <%= render "favorite_rants" %>
 
   </div>
 
