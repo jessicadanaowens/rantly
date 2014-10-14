@@ -5,15 +5,13 @@ class RantsController < ApplicationController
   def index
     @rant = Rant.new
     @my_rants = Rant.where(:user_id => session[:user_id])
-    @latest_rants = Rant.where.not(user_id: session[:user_id])
-    # @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
+    latest_rants
   end
 
   def create
     @rant = Rant.new
     @my_rants = Rant.where(:user_id => session[:user_id])
-    @latest_rants = Rant.where.not(user_id: session[:user_id])
-    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
+    latest_rants
 
     @rant = Rant.new(
       :topic => params[:rant][:topic],
@@ -44,6 +42,10 @@ class RantsController < ApplicationController
 
   def allow_params
     params.require(:rant).permit(:topic, :rant, :user_id => session[:user_id])
+  end
+
+  def latest_rants
+    @latest_rants ||= Rant.where.not(user_id: session[:user_id])
   end
 
 end

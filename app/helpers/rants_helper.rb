@@ -11,4 +11,5 @@ module RantsHelper
       button_to "Favorite", user_favorite_rants_path(current_user, rant), method: :post, class: "button"
     end
   end
+
 end

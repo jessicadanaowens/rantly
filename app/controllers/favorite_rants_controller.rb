@@ -3,7 +3,6 @@ class FavoriteRantsController < ApplicationController
   def index
     @rant = Rant.new
     @favorite_rants = current_user.favorite_rants
-    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
   end
 
   def create
