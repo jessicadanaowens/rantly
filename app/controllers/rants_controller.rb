@@ -36,8 +36,8 @@ class RantsController < ApplicationController
   end
 
   def show
-    @favorite_rants_ids = FavoriteRant.where(:user_id => params[:user_id]).select(:rant_id).map(&:rant_id)
-    @rant = Rant.find(params[:id])
+    @rant = Rant.new
+    @show_rant = Rant.find(params[:id])
   end
 
   private

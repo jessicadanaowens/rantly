@@ -5,13 +5,13 @@
   </div>
 
   <div class="dash-flex2">
-    <h1 class="text-center rant-label"><%= @rant.topic %></h1>
-    <%= favorite_rant_button @rant %>
+    <h1 class="text-center rant-label"><%= @show_rant.topic %></h1>
+    <%= favorite_rant_button @show_rant %>
     <br>
     <hr>
 
     <div class="show-rant-image"<%= image_tag("jeff.png") %></div>
-    <p class="show-rant-text"><%= @rant.rant %></p>
+    <p class="show-rant-text"><%= @show_rant.rant %></p>
   </div>
 
 </div>
