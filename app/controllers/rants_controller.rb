@@ -6,7 +6,7 @@ class RantsController < ApplicationController
     @rant = Rant.new
     @my_rants = Rant.where(:user_id => session[:user_id])
     @latest_rants = Rant.where.not(user_id: session[:user_id])
-    @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
+    # @interesting_ranters_ids = InterestingRanterLocator.new(current_user).interesting_ranters_ids
   end
 
   def create

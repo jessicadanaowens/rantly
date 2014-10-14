@@ -10,11 +10,7 @@
 
     <hr>
 
-    <% if @interesting_ranters_ids.include?(@user.id) %>
-      <h1><%= button_to "unfollow", user_interesting_ranter_path(current_user, @user.id), method: :delete %></h1>
-    <% else %>
-      <%= button_to "follow", user_interesting_ranters_path(current_user, @user.id), method: :post %>
-    <% end %>
+    <%= follow_button @user %>
 
   <p><%= @user.bio %></p>
 

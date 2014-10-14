@@ -20,11 +20,11 @@
     <% user.rants.each do |rant| %>
 
             <li>
-              <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id) %>
+              <%= link_to rant.rant, user_rant_path(user, rant.id) %>
             </li>
             <li>
-              <%= link_to rant.user.username, user_path(rant.user_id) %>
-              <%= render "layouts/follow_button" %>
+              <%= link_to user.username, user_path(user) %>
+              <%= follow_button user %>
             </li>
             <li>
               <% favorite_rant = FavoriteRant.where(rant_id: rant.id, user_id: current_user.id).first %>
