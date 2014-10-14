@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User Auth" do
-  scenario "User registers unsuccessfully", :js => true do
+  scenario "User registers unsuccessfully with blank username", :js => true do
     visit '/home'
 
     click_on "Join"
@@ -15,6 +15,22 @@ feature "User Auth" do
     end
     page.find('.register-button-flex').click
     expect(page).to have_content "Username can't be blank"
+  end
+
+  scenario "User registers unsuccessfully with blank short password", :js => true do
+    visit '/home'
+
+    click_on "Join"
+    fill_in "Username", :with => "Jessica"
+    fill_in "First name", :with => "Jessica"
+    fill_in "Last name", :with => "Owens"
+    fill_in "Bio", :with => "I love to draw!"
+    fill_in "Password", :with => "p"
+    within(".radio-flex-container") do
+      choose "user_frequency_daily"
+    end
+    page.find('.register-button-flex').click
+    expect(page).to have_content "Password is too short"
   end
 
   scenario "User registers successfully", :js => true do

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :rants
 
   validates :username, :first_name, :last_name, :bio, :frequency, presence: true
+  validates :password, length: { minimum: 5 }
 
   def self.search(search)
     if search
