@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class Rant < ActiveRecord::Base
 
   belongs_to :user
