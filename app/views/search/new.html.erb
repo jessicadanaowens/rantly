@@ -14,52 +14,10 @@
         <%= submit_tag "SEARCH", :class => "search-button" %></div>
     <% end %>
 
-    <% if @users %>
-      <% @users.each do |user| %>
-        <% if user != nil && user.rants.length > 0%>
+    <%= render "user_search_results" %>
 
-            <% user.rants.each do |rant| %>
-
-            <div class="latest-rant-container-flex">
-
-              <div class="latest-rant-flex1">
-                <div class="latest-ranter-name"><%= link_to user.username, user_path(user) %></div>
-                <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
-                <%= follow_button user %>
-              </div>
-
-              <div class="latest-rant-flex2">
-                <%= link_to rant.rant, user_rant_path(user, rant.id), :class => ("font-10pt") %>
-
-                <%= favorite_rant_button rant %>
-
-              </div>
-              </div>
-            <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <% if @rants %>
-      <% @rants.each do |rant| %>
-        <% if rant != nil %>
-
-          <div class="latest-rant-container-flex">
-
-            <div class="latest-rant-flex1">
-              <div class="latest-ranter-name"><%= link_to rant.user.username, user_path(rant.user) %></div>
-              <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
-              <%= follow_button rant.user %>
-            </div>
-
-            <div class="latest-rant-flex2">
-              <%= link_to rant.rant, user_rant_path(rant.user, rant.id), :class => ("font-10pt") %>
-              <%= favorite_rant_button rant %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render "rant_search_results" %>
+    
   </div>
 </div>
 
