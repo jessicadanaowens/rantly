@@ -4,6 +4,9 @@
   <%= form_for @user do |f| %>
     <%= render "error_messages" %>
 
+    <div><%= f.file_field :avatar %></div>
+    <br>
+
     <div class="join-flex-container">
       <div class="join-flex-form">
         <div><%= f.label :username %></div>
