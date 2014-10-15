@@ -15,7 +15,7 @@
       </div>
 
       <div class="latest-rant-flex2">
-        <%= link_to rant.rant, user_rant_path(rant.user_id, rant.id), :class => ("font-10pt") %>
+        <%= link_to markdown(rant.rant), user_rant_path(rant.user_id, rant.id), :class => ("font-10pt") %>
 
         <%= favorite_rant_button rant %>
 
