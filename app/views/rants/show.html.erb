@@ -7,6 +7,7 @@
   <div class="dash-flex2">
 
     <h1 class="text-center rant-label"><%= @show_rant.topic %></h1>
+    <div class="number-of-favorites"><%= number_of_favorites @show_rant %></div>
     <%= favorite_rant_button @show_rant %>
     <br>
     <hr>
