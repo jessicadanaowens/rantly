@@ -5,11 +5,13 @@
   </div>
 
   <div class="dash-flex2">
+    <h1 class="text-center rant-label">Latest Rants</h1>
+    <hr>
+
 
     <%= form_tag search_path, :method => "get" do %>
-
-      <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-      <%= submit_tag "Search" %>
+      <div><%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "SEARCH", :class => "search-button" %></div>
     <% end %>
 
     <% if @users %>
