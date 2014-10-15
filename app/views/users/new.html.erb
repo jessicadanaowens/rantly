@@ -1,8 +1,11 @@
 <div class="form-container">
   <h1 class="register-form-title">Register</h1>
 
-  <%= form_for @user do |f| %>
+  <%= form_for @user, :html => { :multipart => true } do |f| %>
     <%= render "error_messages" %>
+
+    <div><%= f.file_field :avatar %></div>
+    <br>
 
     <div class="join-flex-container">
       <div class="join-flex-form">

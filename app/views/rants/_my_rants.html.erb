@@ -4,7 +4,7 @@
 
     <div class="latest-rant-flex1">
       <div class="latest-ranter-name"><%= current_user.username %></div>
-      <div class="latest-rant-picture"><%= image_tag("jeff.png") %></div>
+      <div class="latest-rant-picture"><%= image_tag current_user.avatar.url(:thumb) %></div>
     </div>
 
     <div class="latest-rant-flex2">
