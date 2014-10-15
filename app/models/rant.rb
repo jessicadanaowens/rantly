@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class Rant < ActiveRecord::Base
 
   belongs_to :user
@@ -10,6 +11,18 @@ class Rant < ActiveRecord::Base
   def self.sort_by_favorites(rants)
     rants.sort_by do |rant|
       FavoriteRant.where(:rant_id => rant.id).length
+    end
+  end
+
+  def self.search_topic(search)
+    if search
+      where('topic LIKE ?', "%#{search}%")
+    end
+  end
+
+  def self.search_rant(search)
+    if search
+      where('rant LIKE ?', "%#{search}%")
     end
   end
 

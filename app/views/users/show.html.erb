@@ -7,9 +7,9 @@
   <div class="dash-flex2">
 
     <h1 class="text-center rant-label"><%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="right-side-follow-button"<%= follow_button @user %></div>
+    <br>
     <hr>
-
-    <%= follow_button @user %>
 
     <p><%= @user.bio %></p>
 

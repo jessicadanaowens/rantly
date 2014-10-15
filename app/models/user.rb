@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class User < ActiveRecord::Base
   include Concerns::Following
 
@@ -10,11 +11,24 @@ class User < ActiveRecord::Base
   validates :username, :first_name, :last_name, :bio, :frequency, presence: true
   validates :password, length: { minimum: 5 }
 
-  def self.search(search)
+  def self.search_last_name(search)
     if search
       where('last_name LIKE ?', "%#{search}%")
     end
   end
+
+  def self.search_first_name(search)
+    if search
+      where('first_name LIKE ?', "%#{search}%")
+    end
+  end
+
+  def self.search_username(search)
+    if search
+      where('username LIKE ?', "%#{search}%")
+    end
+  end
+
 
 
 end
