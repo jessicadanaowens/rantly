@@ -25,4 +25,6 @@ class Rant < ActiveRecord::Base
     end
   end
 
+
+
 end

@@ -5,6 +5,7 @@ class RantsController < ApplicationController
   def index
     @rant = Rant.new
     latest_rants
+    mentioned_rants
   end
 
   def create
@@ -44,6 +45,10 @@ class RantsController < ApplicationController
 
   def latest_rants
     @latest_rants ||= Rant.where.not(user_id: session[:user_id])
+  end
+
+  def mentioned_rants
+    @mentioned_rants ||= Rant.where('rant LIKE ?', "%@#{current_user.username}%")
   end
 
 end
