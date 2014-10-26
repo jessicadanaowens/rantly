@@ -7,20 +7,24 @@ class FavoriteRantsController < ApplicationController
 
   def create
     @favorite_rant = FavoriteRant.new(
-      :user_id => params[:user_id],
-      :rant_id => params[:format]
+      :user_id => current_user.id,
+      :rant_id => params[:id]
     )
 
     if @favorite_rant.save!
       flash[:notice]= "Rant was successfully favorited"
-      redirect_to  user_rant_path(params[:user_id], params[:format])
+      respond_to do |format|
+        format.json { render :json => {}}
+      end
     else
-      redirect_to  user_rant_path(params[:user_id], params[:format])
+      raise "error"
     end
   end
 
   def destroy
-    FavoriteRant.where(:rant_id => params[:id], :user_id => params[:user_id]).destroy_all
-    redirect_to user_rant_path(params[:user_id], params[:id])
+    FavoriteRant.where(:rant_id => params[:id], :user_id => (current_user.id)).destroy_all
+    respond_to do |format|
+      format.json { render :json => {}}
+    end
   end
 end

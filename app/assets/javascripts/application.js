@@ -19,5 +19,8 @@ $(document).ready(function () {
 //follow and un-follow a user
   followButtons();
 
+//favorite and unfavorite a user
+  favoriteButtons();
+
 
 });

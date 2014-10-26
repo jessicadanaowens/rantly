@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :rants, only: [:create, :show]
-    resources :interesting_ranters, only: [:destroy, :index]
-    resources :favorite_rants
+    resources :interesting_ranters, only: [:index]
+    resources :favorite_rants, only: [:index]
   end
 
   resources :rants , :only => :destroy do
@@ -21,5 +21,9 @@ Rails.application.routes.draw do
 
   post "/interesting_ranters/:id" => "interesting_ranters#create"
   delete "/interesting_ranters/:id" => "interesting_ranters#destroy"
+
+  post "/favorite_rants/:id" => "favorite_rants#create", as: :add_interesting_ranter
+  delete "/favorite_rants/:id" => "favorite_rants#destroy", as: :delete_interesting_ranter
+
 
 end
