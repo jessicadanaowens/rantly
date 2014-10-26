@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-//= require bootstrap-sprockets
+
+$(document).ready(function () {
+
+//follow and un-follow a user
+  followButtons();
+
+
+});

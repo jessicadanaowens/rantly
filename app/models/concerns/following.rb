@@ -14,8 +14,8 @@ module Concerns
       has_many :users, through: :follower_relationships
     end
 
-    def following? user
-      ranter_ids.include? user.id
+    def following? ranter
+      ranter_ids.include? ranter.id
     end
 
   end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :rants, only: [:create, :show]
-    resources :interesting_ranters, only: [:create, :destroy, :index]
+    resources :interesting_ranters, only: [:destroy, :index]
     resources :favorite_rants
   end
 
@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
   get "/search" => "search#new", as: :search
 
+  post "/interesting_ranters/:id" => "interesting_ranters#create"
+  delete "/interesting_ranters/:id" => "interesting_ranters#destroy"
 
 end

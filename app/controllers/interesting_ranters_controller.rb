@@ -7,21 +7,25 @@ class InterestingRantersController < ApplicationController
 
   def create
    @interesting_ranter = InterestingRanter.new(
-     :user_id => params[:user_id],
-     :ranter_id =>params["format"]
+     :user_id => current_user.id,
+     :ranter_id =>params[:id]
    )
 
     if @interesting_ranter.save!
       flash[:notice] = "Follow was successful"
-      redirect_to :back
+      respond_to do |format|
+        format.json { render :json => {}}
+      end
     else
-      redirect_to :back
+      raise "error"
     end
   end
 
   def destroy
-    InterestingRanter.where(:user_id => params[:user_id], :ranter_id => params[:id]).destroy_all
-    redirect_to root_path
+    InterestingRanter.where(:user_id => current_user.id, :ranter_id => params[:id]).destroy_all
+    respond_to do |format|
+      format.json { render :json => {}}
+    end
   end
 
 end
