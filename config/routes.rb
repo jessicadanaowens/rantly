@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :favorite_rants
   end
 
-  resources :rants , :only => :destroy
+  resources :rants , :only => :destroy do
+    resources :comments
+  end
   get "/rants" => "search#index", as: :rants
 
   get "/search" => "search#new", as: :search

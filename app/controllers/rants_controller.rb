@@ -33,6 +33,7 @@ class RantsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @rant = Rant.new
     @show_rant = Rant.find(params[:id])
   end

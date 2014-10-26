@@ -9,11 +9,12 @@ def register
   fill_in "Last name", :with => "Owens"
   fill_in "Bio", :with => "I love to draw!"
   fill_in "Password", :with => "password"
+  fill_in "Email", :with => "jessica@gmail.com"
   within(".radio-flex-container") do
     choose "user_frequency_daily"
   end
+  attach_file('user_avatar', Rails.root + 'spec/photos/room.png')
   page.find('.register-button-flex').click
-  expect(page).to have_content "Thank you for registering"
 end
 
 def login

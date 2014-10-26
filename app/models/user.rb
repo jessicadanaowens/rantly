@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :favorite_rants
   accepts_nested_attributes_for :rants
 
-  validates :username, :first_name, :last_name, :bio, :frequency, presence: true
+  validates :username, :first_name, :last_name, :bio, :frequency, :avatar, presence: true
   validates :password, length: { minimum: 5 }
 
   def self.search_last_name(search)

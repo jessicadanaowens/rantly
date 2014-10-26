@@ -2,6 +2,7 @@ class Rant < ActiveRecord::Base
 
   belongs_to :user
   has_many :favorite_rants
+  has_many :comments
 
   validates_presence_of :topic, :rant, :user_id
   validates_length_of :topic, :maximum => 50, :message => "Title must be less than 50 characters"

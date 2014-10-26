@@ -3,11 +3,10 @@ require "rails_helper"
 feature "User can follow other users", :js do
   scenario "by clicking follow on the dashboard page" do
     user = create_user
-    create_another_rant(user)
+    rant = create_another_rant(user)
 
     register
     login
-
     click_on "Follow"
 
   end

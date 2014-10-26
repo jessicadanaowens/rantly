@@ -4,7 +4,11 @@
   <%= form_for @user, :html => { :multipart => true } do |f| %>
     <%= render "error_messages" %>
 
-    <div><%= f.file_field :avatar %></div>
+    <%= f.file_field :avatar %>
+    <br>
+    <br>
+    <div><%= f.label :email %></div>
+    <%= f.email_field :email %>
     <br>
 
     <div class="join-flex-container">

@@ -23,6 +23,26 @@
       </div>
 
     </div>
+
+    <% @show_rant.comments.each do |comment| %>
+      <div class="latest-rant-container-flex">
+      <div class="latest-rant-flex1">
+        <div class="commentor-picture"><%= image_tag("jeff.png") %></div>
+      </div>
+
+      <div class="latest-rant-flex2">
+        <p class="show-rant-text"><%= comment.text %></p>
+      </div>
+      </div>
+
+    <% end %>
+
+    <%= form_for :comment, url: rant_comments_path(@show_rant) do |f| %>
+      <div><%= f.text_field :text, :class => "comment-form-area", placeholder: "RANT BACK" %></div>
+
+      <div><%= f.submit "RANT BACK", :class => "comment-form-submit-button" %></div>
+    <% end %>
+
   </div>
 
 </div>

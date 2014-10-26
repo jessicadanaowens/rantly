@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015193259) do
+ActiveRecord::Schema.define(version: 20141025021242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.integer "user_id"
+    t.integer "rant_id"
+    t.text    "text"
+  end
 
   create_table "favorite_rants", force: true do |t|
     t.integer "rant_id"
@@ -45,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141015193259) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "email"
   end
 
 end

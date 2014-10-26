@@ -7,6 +7,21 @@
 @import "favorites";
 @import "dashboard";
 
+.commentor-picture img{
+  width: 75px;
+}
+
+.comment-form-area {
+  width: 100%;
+}
+
+.comment-form-submit-button {
+  background-color: green;
+  color: white;
+  float: right;
+  margin-top: 5px;
+  border-radius: 3px;
+}
 .button {
   background-color: white;
   border-style: none;

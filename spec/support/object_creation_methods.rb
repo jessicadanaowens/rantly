@@ -1,11 +1,11 @@
 require "rails_helper"
 
 def create_user
-  User.create(:id => 2, :username => "Blake", :first_name => "Blake", :last_name => "Calderwood", :bio => "I love to draw!", :password => "password", :frequency => "daily")
+  User.create(:username => "Blake", :first_name => "Blake", :last_name => "Calderwood", :bio => "I love to draw!", :password => "password", :frequency => "daily", :email => "Blake@gmail.com", :avatar => File.new(Rails.root + 'spec/photos/room.png'))
 end
 
 def create_another_rant(user)
-  Rant.create(:topic=>"another rant", :rant=>"another rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rant", :user_id=>2)
+  Rant.create(:topic=>"another rant", :rant=>"another rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rantanother rant", :user_id=> user.id)
 end
 
 def create_rant
