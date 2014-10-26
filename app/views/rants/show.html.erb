@@ -24,6 +24,10 @@
 
     </div>
 
+    <% if @show_rant.comments.length > 0 %>
+      <hr class="end-of-latest-rant">
+    <% end %>
+
     <% @show_rant.comments.each do |comment| %>
       <div class="latest-rant-container-flex">
       <div class="latest-rant-flex1">
