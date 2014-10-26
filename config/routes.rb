@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "signin" => "sessions#create"
 
   resources :users do
-    resources :rants, only: [:create, :show]
+    resources :rants, only: [:show]
     resources :interesting_ranters, only: [:index]
     resources :favorite_rants, only: [:index]
   end
@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   post "/favorite_rants/:id" => "favorite_rants#create", as: :add_interesting_ranter
   delete "/favorite_rants/:id" => "favorite_rants#destroy", as: :delete_interesting_ranter
 
-
+  post "/rants" => "rants#create", as: :new_rant
 end

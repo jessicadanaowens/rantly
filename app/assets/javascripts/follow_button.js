@@ -30,7 +30,7 @@ var followButtons = function() {
           if ($(this).attr('data-ranter-id') == ranterId) {
             debugger;
             $(this).attr('value', 'Follow')
-            $(this).parent().parent().parent().remove();
+//            $(this).parent().parent().parent().remove();
           }
         })
       })

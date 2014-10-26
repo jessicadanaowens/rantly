@@ -22,5 +22,8 @@ $(document).ready(function () {
 //favorite and unfavorite a user
   favoriteButtons();
 
+//user can rant
+  createRant();
+
 
 });

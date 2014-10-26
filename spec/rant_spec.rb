@@ -13,8 +13,8 @@ feature "User can rant", :js do
     register
     login
     click_on "RANT"
-    expect(page).to have_content "Topic can't be blank"
-    expect(page).to have_content "Rant can't be blank"
+    expect(page).to have_content "can't be blank"
+    expect(page).to have_content "can't be blank"
   end
 
   scenario "User can delete a rant that they've created", :js=>true do

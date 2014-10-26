@@ -13,16 +13,21 @@ class RantsController < ApplicationController
     latest_rants
 
     @rant = Rant.new(
-      :topic => params[:rant][:topic],
-      :rant => params[:rant][:rant],
-      :user_id => session[:user_id]
+      :topic => params[:topic],
+      :rant => params[:rant],
+      :user_id => current_user.id
     )
 
     if @rant.save
       flash[:notice] = "Rant was successfully created"
-      redirect_to root_path
+      respond_to do |format|
+        format.json { render :json => {}}
+      end
     else
-      render :index
+      errors = @rant.errors.messages
+      p "*" * 80
+      p errors
+      render :json => {errors: errors}
     end
   end
 

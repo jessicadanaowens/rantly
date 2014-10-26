@@ -8,7 +8,7 @@
 
 <hr>
 
-<%= form_for [current_user, @rant], url: user_rants_path(current_user) do |f| %>
+<%= form_for @rant, url: new_rant_path do |f| %>
   <% @rant.errors.any? %>
   <% @rant.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -16,9 +16,11 @@
 
   <div class="white-text"><%= f.label :name, "A rant about:" %></div>
   <div><%= f.text_field :topic, :class => "rant-form-field" %></div>
+  <div class="topic-errors"></div>
 
   <div class="white-text"><%= f.label :name, "Rant:" %></div>
   <div><%= f.text_area :rant, :class => "rant-form-area", placeholder: "Rant about something, or at someone..." %></div>
+  <div class="rant-errors"></div>
 
   <div><%= f.submit "RANT", :class => "rant-form-submit-button" %></div>
 <% end %>
