@@ -30,9 +30,4 @@ class User < ActiveRecord::Base
       where('username LIKE ?', "%#{search}%")
     end
   end
-
-
-
-
-
 end

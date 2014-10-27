@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class UsersController < ApplicationController
   skip_before_action :ensure_current_user, only: [:new, :create]
 
@@ -10,19 +9,18 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        # UserMailer.welcome_email(@user).deliver
-        cookies.delete :welcome
+    if @user.save
+      cookies.delete :welcome
 
-        format.html { redirect_to(root_path, notice: 'Thank you for registering.') }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      flash[:notice] = "Thank you for registering #{@user.username}!"
+      UserMailer.registration(@user).deliver
+      UserMailer.confirmation(@user).deliver
+      redirect_to root_path
+    else
+      render :new
     end
   end
+
 
   def edit
     find_user

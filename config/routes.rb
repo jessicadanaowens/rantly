@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   delete "/favorite_rants/:id" => "favorite_rants#destroy", as: :delete_interesting_ranter
 
   post "/rants" => "rants#create", as: :new_rant
+
+  get "/confirm_email/:confirmation_token" => "users#confirm", as: :email_confirmation
+
 end
