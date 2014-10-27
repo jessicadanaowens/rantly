@@ -12,4 +12,21 @@ module RantsHelper
     end
   end
 
+  def truncate rant
+    array = rant.split(" ")
+    new_array = []
+    count = 0
+
+    array.each do |word|
+      if count == 300
+        new_array.push('...')
+        break
+      else
+        new_array.push(word)
+        count += 1
+      end
+    end
+    new_array.join(" ")
+  end
+
 end
