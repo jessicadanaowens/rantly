@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(:username => params[:session][:username])
     if user && user.authenticate(params[:session][:password])
-      if user.email_is_confirmed?
+      if user.confirmed
         session[:user_id] = user.id
         cookies.delete :welcome
         flash[:notice] = "Welcome"

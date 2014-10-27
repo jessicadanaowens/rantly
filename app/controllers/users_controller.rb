@@ -43,6 +43,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def confirm
+    email_confirmer = EmailConfirmer.find_by(confirmation_token: params[:confirmation_token])
+    if email_confirmer
+      User.find(email_confirmer.user_id).update_attribute(:confirmed, true)
+      email_confirmer.destroy
+      flash[:notice] = "Email confirmed. You can now log in."
+      redirect_to signin_path
+    else
+      flash[:notice] = "Email confirmation is invalid"
+      redirect_to root_path
+    end
+  end
+
   private
 
   def user_params
