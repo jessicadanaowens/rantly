@@ -24,11 +24,9 @@ var favoriteButtons = function() {
         type: 'DELETE'
       });
       deleteInterestingRanterPromise.success( function() {
-        debugger;
         var favoriteButtons = $('.favorite-button')
         favoriteButtons.each( function() {
           if ($(this).attr('data-rant-id') == rantId) {
-            debugger;
             $(this).attr('value', 'Favorite')
 
           }

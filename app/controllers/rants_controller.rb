@@ -25,8 +25,6 @@ class RantsController < ApplicationController
       end
     else
       errors = @rant.errors.messages
-      p "*" * 80
-      p errors
       render :json => {errors: errors}
     end
   end

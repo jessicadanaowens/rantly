@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
   def create
 
     rant = Rant.find_by(:id => params[:rant_id])
-    p "*" * 80
-    p params
+
     @comment = Comment.new(
       :user_id => current_user.id,
       :rant_id => params[:rant_id],

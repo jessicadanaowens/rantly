@@ -24,11 +24,9 @@ var followButtons = function() {
         type: 'DELETE'
       });
       deleteInterestingRanterPromise.success( function() {
-        debugger;
         var followButtons = $('.follow-button')
         followButtons.each( function() {
           if ($(this).attr('data-ranter-id') == ranterId) {
-            debugger;
             $(this).attr('value', 'Follow')
 //            $(this).parent().parent().parent().remove();
           }

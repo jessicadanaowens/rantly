@@ -2,7 +2,6 @@ var createRant = function() {
 
   $("body").on('click', ".rant-form-submit-button", function(event) {
     event.preventDefault();
-    debugger;
 
     $(".topic-errors").html("");
     $(".rant-errors").html("");
@@ -18,7 +17,6 @@ var createRant = function() {
       } else {
         location.reload(true);
       }
-
     });
   });
 };
